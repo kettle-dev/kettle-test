@@ -22,6 +22,8 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
+- Runtime dependency `turbo_tests2` now requires v3.1.4 or newer.
+
 ### Deprecated
 
 ### Removed
