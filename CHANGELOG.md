@@ -20,6 +20,8 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
+- Support JRuby 10.1, truffleruby 34.0
+
 ### Changed
 
 - Runtime dependency `turbo_tests2` now requires v3.1.4 or newer.
