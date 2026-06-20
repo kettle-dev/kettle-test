@@ -10,6 +10,10 @@ ENV["FLOSS_FUNDING_KETTLE__TEST"] = "Free-as-in-beer"
 #       The rescue LoadError handles that scenario.
 begin
   require "kettle-soup-cover"
+  if Kettle::Soup::Cover::DO_COV
+    require "simplecov"
+    SimpleCov.start
+  end
   require "simplecov" if Kettle::Soup::Cover::DO_COV # `.simplecov` is run here!
 rescue LoadError => error
   # check the error message and re-raise when unexpected
