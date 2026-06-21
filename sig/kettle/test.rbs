@@ -19,9 +19,5 @@ module Kettle
 
     # Class methods
     def self.is_parallel_test?: () -> bool
-
-    module Version
-      VERSION: untyped
-    end
   end
 end
