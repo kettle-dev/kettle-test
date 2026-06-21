@@ -20,14 +20,7 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
-- Support JRuby 10.1, truffleruby 34.0
-
-- Added support for JRuby 10.1 and TruffleRuby 34.0.
-
 ### Changed
-
-- Retemplated project metadata and CI/development automation with `kettle-jem` v7.0.0.
-- Runtime dependency `turbo_tests2` now requires v3.1.4 or newer.
 
 ### Deprecated
 
@@ -36,6 +29,24 @@ Please file a bug if you notice a violation of semantic versioning.
 ### Fixed
 
 ### Security
+
+## [2.0.6] - 2026-06-21
+
+- TAG: [v2.0.6][2.0.6t]
+- COVERAGE: 100.00% -- 91/91 lines in 15 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 15 files
+- 90.00% documented
+
+### Added
+
+- Support JRuby 10.1, truffleruby 34.0
+
+- Added support for JRuby 10.1 and TruffleRuby 34.0.
+
+### Changed
+
+- Retemplated project metadata and CI/development automation with `kettle-jem` v7.0.0.
+- Runtime dependency `turbo_tests2` now requires v3.1.4 or newer.
 
 ## [2.0.5] - 2026-06-10
 
@@ -341,7 +352,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.5...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.6...HEAD
+[2.0.6]: https://github.com/kettle-dev/kettle-test/compare/v2.0.5...v2.0.6
+[2.0.6t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.6
 [2.0.5]: https://github.com/kettle-dev/kettle-test/compare/v2.0.4...v2.0.5
 [2.0.5t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.5
 [2.0.4]: https://github.com/kettle-dev/kettle-test/compare/v2.0.3...v2.0.4
