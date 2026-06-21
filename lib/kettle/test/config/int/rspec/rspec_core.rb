@@ -4,7 +4,7 @@ RSpec.configure do |config|
   # Settings that only exist in RSpec v3+ are unavailable during transpec's RSpec syntax upgrade.
   # Other settings may be easier to upgrade to modern defaults after the uograde,
   #   so we leave them alone during transpec.
-  # :nocov:
+  # simplecov:disable
   if Kettle::Test::TRANSPEC
     config.expect_with(:rspec) do |c|
       c.syntax = [:expect, :should]
@@ -37,5 +37,5 @@ RSpec.configure do |config|
       config.filter_run_excluding(skip_ci: true)
     end
   end
-  # :nocov:
+  # simplecov:enable
 end
