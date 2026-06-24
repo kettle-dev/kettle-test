@@ -30,6 +30,19 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Security
 
+## [2.0.7] - 2026-06-24
+
+- TAG: [v2.0.7][2.0.7t]
+- COVERAGE: 96.81% -- 91/94 lines in 16 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 16 files
+- 90.00% documented
+
+### Changed
+
+- Updated to latest kettle-jem template
+  - Updated GHA SHA pins
+  - Updated dependencies
+
 ## [2.0.6] - 2026-06-21
 
 - TAG: [v2.0.6][2.0.6t]
@@ -352,7 +365,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.6...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.7...HEAD
+[2.0.7]: https://github.com/kettle-dev/kettle-test/compare/v2.0.6...v2.0.7
+[2.0.7t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.7
 [2.0.6]: https://github.com/kettle-dev/kettle-test/compare/v2.0.5...v2.0.6
 [2.0.6t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.6
 [2.0.5]: https://github.com/kettle-dev/kettle-test/compare/v2.0.4...v2.0.5
