@@ -22,6 +22,8 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
+- Runtime dependency `rspec-stubbed_env` now requires v1.0.5 or newer.
+
 ### Deprecated
 
 ### Removed
