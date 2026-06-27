@@ -22,8 +22,6 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- Runtime dependency `rspec-stubbed_env` now requires v1.0.5 or newer.
-
 ### Deprecated
 
 ### Removed
@@ -31,6 +29,17 @@ Please file a bug if you notice a violation of semantic versioning.
 ### Fixed
 
 ### Security
+
+## [2.0.8] - 2026-06-27
+
+- TAG: [v2.0.8][2.0.8t]
+- COVERAGE: 96.81% -- 91/94 lines in 16 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 16 files
+- 90.00% documented
+
+### Changed
+
+- Runtime dependency `rspec-stubbed_env` now requires v1.0.5 or newer.
 
 ## [2.0.7] - 2026-06-24
 
@@ -367,7 +376,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.7...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.8...HEAD
+[2.0.8]: https://github.com/kettle-dev/kettle-test/compare/v2.0.7...v2.0.8
+[2.0.8t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.8
 [2.0.7]: https://github.com/kettle-dev/kettle-test/compare/v2.0.6...v2.0.7
 [2.0.7t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.7
 [2.0.6]: https://github.com/kettle-dev/kettle-test/compare/v2.0.5...v2.0.6
