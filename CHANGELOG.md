@@ -28,9 +28,18 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
-- Package configured license files in gem release file lists.
-
 ### Security
+
+## [2.0.9] - 2026-07-01
+
+- TAG: [v2.0.9][2.0.9t]
+- COVERAGE: 96.81% -- 91/94 lines in 16 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 16 files
+- 90.00% documented
+
+### Fixed
+
+- Package configured license files in gem release file lists.
 
 ## [2.0.8] - 2026-06-27
 
@@ -378,7 +387,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.8...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.9...HEAD
+[2.0.9]: https://github.com/kettle-dev/kettle-test/compare/v2.0.8...v2.0.9
+[2.0.9t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.9
 [2.0.8]: https://github.com/kettle-dev/kettle-test/compare/v2.0.7...v2.0.8
 [2.0.8t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.8
 [2.0.7]: https://github.com/kettle-dev/kettle-test/compare/v2.0.6...v2.0.7
