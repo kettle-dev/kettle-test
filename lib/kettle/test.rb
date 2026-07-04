@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "date"
-require "version_gem"
 require_relative "test/version"
 
 # Kettle namespace for the kettle-rb ecosystem of gems.
@@ -56,8 +55,4 @@ module Kettle
       end
     end
   end
-end
-
-Kettle::Test::Version.class_eval do
-  extend VersionGem::Basic
 end
