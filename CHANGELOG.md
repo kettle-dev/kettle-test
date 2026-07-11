@@ -22,9 +22,6 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- `require "kettle/test"` no longer loads `version_gem` by default; require
-  `kettle/test/version_gem` for the optional `VersionGem::Basic` extension.
-
 ### Deprecated
 
 ### Removed
@@ -32,6 +29,18 @@ Please file a bug if you notice a violation of semantic versioning.
 ### Fixed
 
 ### Security
+
+## [2.0.10] - 2026-07-11
+
+- TAG: [v2.0.10][2.0.10t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 90.00% documented
+
+### Changed
+
+- `require "kettle/test"` no longer loads `version_gem` by default; require
+  `kettle/test/version_gem` for the optional `VersionGem::Basic` extension.
 
 ## [2.0.9] - 2026-07-01
 
@@ -390,7 +399,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.9...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.10...HEAD
+[2.0.10]: https://github.com/kettle-dev/kettle-test/compare/v2.0.9...v2.0.10
+[2.0.10t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.10
 [2.0.9]: https://github.com/kettle-dev/kettle-test/compare/v2.0.8...v2.0.9
 [2.0.9t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.9
 [2.0.8]: https://github.com/kettle-dev/kettle-test/compare/v2.0.7...v2.0.8

@@ -70,7 +70,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 and <a href="https://tom.preston-werner.com/2022/05/23/major-version-numbers-are-not-sacred.html">yes</a>, platform and engine support are part of the <a href="https://github.com/semver/semver/issues/716#issuecomment-869336139">public API</a>.<br>
 Please file a bug if you notice a violation of semantic versioning.</p>
 
-<h2 id="unreleased"><a href="https://github.com/kettle-dev/kettle-test/compare/v2.0.9...HEAD">Unreleased</a></h2>
+<h2 id="unreleased"><a href="https://github.com/kettle-dev/kettle-test/compare/v2.0.10...HEAD">Unreleased</a></h2>
 
 <h3 id="added">Added</h3>
 
@@ -83,6 +83,25 @@ Please file a bug if you notice a violation of semantic versioning.</p>
 <h3 id="fixed">Fixed</h3>
 
 <h3 id="security">Security</h3>
+
+<h2 id="2010---2026-07-11">
+<a href="https://github.com/kettle-dev/kettle-test/compare/v2.0.9...v2.0.10">2.0.10</a> - 2026-07-11</h2>
+
+<ul>
+  <li>TAG: <a href="https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.10">v2.0.10</a>
+</li>
+  <li>COVERAGE: 96.84% – 92/95 lines in 17 files</li>
+  <li>BRANCH COVERAGE: 100.00% – 2/2 branches in 17 files</li>
+  <li>90.00% documented</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+
+<ul>
+  <li>
+<code>require "kettle/test"</code> no longer loads <code>version_gem</code> by default; require<br>
+<code>kettle/test/version_gem</code> for the optional <code>VersionGem::Basic</code> extension.</li>
+</ul>
 
 <h2 id="209---2026-07-01">
 <a href="https://github.com/kettle-dev/kettle-test/compare/v2.0.8...v2.0.9">2.0.9</a> - 2026-07-01</h2>
@@ -112,7 +131,7 @@ Please file a bug if you notice a violation of semantic versioning.</p>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 
 <ul>
   <li>Runtime dependency <code>rspec-stubbed_env</code> now requires v1.0.5 or newer.</li>
@@ -129,7 +148,7 @@ Please file a bug if you notice a violation of semantic versioning.</p>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 
 <ul>
   <li>Updated to latest kettle-jem template
@@ -162,7 +181,7 @@ Please file a bug if you notice a violation of semantic versioning.</p>
   </li>
 </ul>
 
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 
 <ul>
   <li>Retemplated project metadata and CI/development automation with <code>kettle-jem</code> v7.0.0.</li>
@@ -180,7 +199,7 @@ Please file a bug if you notice a violation of semantic versioning.</p>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 
 <ul>
   <li>
@@ -216,7 +235,7 @@ GitHub organization.</p>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 
 <ul>
   <li>Retemplated project workflows with the current kettle-jem template and raised<br>
@@ -242,7 +261,7 @@ the randomization seed needed to reproduce order-dependent failures.</li>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 
 <ul>
   <li>Retemplated project files with the current kettle-jem template, including<br>
@@ -269,7 +288,7 @@ process overrides so JRuby 9.2 does not inherit <code>KETTLE_TEST_SILENT=false</
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 
 <ul>
   <li>Retemplated project files with the current kettle-jem template, including the<br>
@@ -298,7 +317,7 @@ root-level <code>coverage/</code> and <code>tmp/</code> instead of being written
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 
 <ul>
   <li>Refreshed generated project templates and CI workflows.</li>
@@ -343,7 +362,7 @@ timing, and coverage summary.</li>
 helpers and configuration constants.</li>
 </ul>
 
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 
 <ul>
   <li>
@@ -373,7 +392,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>100.00% documented</li>
 </ul>
 
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 
 <ul>
   <li>Upgraded to <a href="https://github.com/appraisal-rb/appraisal2/releases/tag/v3.0.1">appraisal2 v3.0.1</a>
@@ -425,7 +444,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   </li>
 </ul>
 
-<h3 id="changed-11">Changed</h3>
+<h3 id="changed-12">Changed</h3>
 
 <ul>
   <li>Updated documentation on hostile takeover of RubyGems
@@ -512,7 +531,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>default config for rspec-pending_for</li>
 </ul>
 
-<h3 id="changed-12">Changed</h3>
+<h3 id="changed-13">Changed</h3>
 
 <ul>
   <li>upgraded kettle-dev to 1.1.34 for development</li>
@@ -536,7 +555,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>opencollective funding links to README.md</li>
 </ul>
 
-<h3 id="changed-13">Changed</h3>
+<h3 id="changed-14">Changed</h3>
 
 <ul>
   <li>kettle-dev 1.0.18 for development</li>
@@ -633,7 +652,7 @@ dependency and requires Ruby 2.4 or newer.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Wed Jul  1 01:41:56 2026 by
+  Generated on Sat Jul 11 01:36:16 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.44 (ruby-4.0.5).
 </div>
