@@ -172,7 +172,10 @@ RSpec.describe Kettle::Test do
         lib_dir = File.expand_path("../../lib", __dir__.to_s)
 
         FileUtils.mkdir_p(bin_dir)
-        File.write(File.join(dir, "kettle-test-summary.gemspec"), "Gem::Specification.new do |spec|\n  spec.name = 'kettle-test-summary'\nend\n")
+        File.write(
+          File.join(dir, "kettle-test-summary.gemspec"),
+          "Gem::Specification.new do |spec|\n  spec.name = 'kettle-test-summary'\nend\n"
+        )
         File.write(fake_bundle, <<~RUBY)
           #!#{RbConfig.ruby}
           $LOAD_PATH.unshift(#{lib_dir.inspect})
@@ -200,6 +203,43 @@ RSpec.describe Kettle::Test do
         expect(status).to be_success
         expect(stderr).to eq("")
         expect(stdout).to match(/🎲  Randomized with seed \d+/)
+      end
+    end
+
+    it "forwards RSpec file:line selectors to the turbo_tests2 runner" do
+      Dir.mktmpdir do |dir|
+        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        bin_dir = File.join(dir, "bin")
+        fake_bundle = File.join(bin_dir, "bundle")
+
+        FileUtils.mkdir_p(bin_dir)
+        File.write(File.join(dir, "kettle-test-summary.gemspec"), "Gem::Specification.new do |spec|\n  spec.name = 'kettle-test-summary'\nend\n")
+        File.write(fake_bundle, <<~BASH)
+          #!/usr/bin/env bash
+          printf 'FAKE_BUNDLE_ARGS='
+          printf '<%s>' "$@"
+          printf '\\n'
+          printf 'Finished in 0.01 seconds\\n'
+          printf '1 example, 0 failures\\n'
+        BASH
+        FileUtils.chmod("+x", fake_bundle)
+
+        env = {
+          "KETTLE_TEST_RUNNER" => "turbo_tests2",
+          "K_SOUP_COV_DO" => "false",
+          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+        }
+
+        stdout, stderr, status = Open3.capture3(
+          env,
+          script,
+          "spec/kettle/test_spec.rb:167",
+          chdir: dir
+        )
+
+        expect(status).to be_success
+        expect(stderr).to eq("")
+        expect(stdout).to include("FAKE_BUNDLE_ARGS=<exec><turbo_tests2><spec/kettle/test_spec.rb:167>")
       end
     end
   end

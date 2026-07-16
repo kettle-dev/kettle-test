@@ -28,6 +28,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- `kettle-test` now has regression coverage ensuring `file:line` RSpec
+  selectors are forwarded unchanged to the default `turbo_tests2` runner.
+
 ### Security
 
 ## [2.0.10] - 2026-07-11
