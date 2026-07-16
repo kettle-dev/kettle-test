@@ -28,10 +28,19 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+### Security
+
+## [2.0.11] - 2026-07-16
+
+- TAG: [v2.0.11][2.0.11t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 90.00% documented
+
+### Fixed
+
 - `kettle-test` now has regression coverage ensuring `file:line` RSpec
   selectors are forwarded unchanged to the default `turbo_tests2` runner.
-
-### Security
 
 ## [2.0.10] - 2026-07-11
 
@@ -402,7 +411,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.10...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.11...HEAD
+[2.0.11]: https://github.com/kettle-dev/kettle-test/compare/v2.0.10...v2.0.11
+[2.0.11t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.11
 [2.0.10]: https://github.com/kettle-dev/kettle-test/compare/v2.0.9...v2.0.10
 [2.0.10t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.10
 [2.0.9]: https://github.com/kettle-dev/kettle-test/compare/v2.0.8...v2.0.9
