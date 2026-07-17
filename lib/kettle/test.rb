@@ -3,9 +3,9 @@
 require "date"
 require_relative "test/version"
 
-# Kettle namespace for the kettle-rb ecosystem of gems.
+# Kettle namespace for the kettle-dev ecosystem of gems.
 module Kettle
-  # Test support and RSpec integration for kettle-rb ecosystem.
+  # Test support and RSpec integration for kettle-dev ecosystem.
   #
   # Exposes environment-controlled constants and helpers that tune RSpec behavior
   # (profiling, backtraces, output silencing, CI filters) and provides a minimal

@@ -829,7 +829,7 @@ Thanks for RTFM. ☺️
 | Field | Value |
 |---|---|
 | Package | kettle-test |
-| Description | 🍲 Kettle::Test is a meta tool from kettle-rb to streamline testing. Acts as a shim dependency, pulling in many other dependencies, to give you OOTB productivity with a RubyGem, or Ruby app project. Configures RSpec w/ syntactic sugar to make writing tests, and testing more scenarios, easier.Configures each dependency library for proper use in the test suite, so they arrive ready to go. Fund overlooked open source projects - bottom of stack, dev/test dependencies: floss-funding.dev |
+| Description | 🍲 Kettle::Test is a meta tool from kettle-dev to streamline testing. Acts as a shim dependency, pulling in many other dependencies, to give you OOTB productivity with a RubyGem, or Ruby app project. Configures RSpec w/ syntactic sugar to make writing tests, and testing more scenarios, easier.Configures each dependency library for proper use in the test suite, so they arrive ready to go. Fund overlooked open source projects - bottom of stack, dev/test dependencies: floss-funding.dev |
 | Homepage | https://github.com/kettle-dev/kettle-test |
 | Source | https://github.com/kettle-dev/kettle-test |
 | License | `AGPL-3.0-only` OR `PolyForm-Small-Business-1.0.0` |
