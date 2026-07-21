@@ -22,6 +22,23 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [2.0.12] - 2026-07-21
+
+- TAG: [v2.0.12][2.0.12t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 90.00% documented
+
+### Changed
+
 - kettle-jem-template-20260716-001 - Shim gemspec manifests now include
   `LICENSE.md` instead of nonexistent `LICENSE.txt`.
 - kettle-jem-template-20260716-002 - Generated gemspec manifests now ship fewer
@@ -37,14 +54,6 @@ Please file a bug if you notice a violation of semantic versioning.
   omit JRuby and TruffleRuby jobs when project config declares MRI-only engines.
 - kettle-jem-template-20260720-005 - Generated README Support & Community rows
   now include a RubyForum help badge.
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 
 ## [2.0.11] - 2026-07-16
 
@@ -427,7 +436,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.11...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.12...HEAD
+[2.0.12]: https://github.com/kettle-dev/kettle-test/compare/v2.0.11...v2.0.12
+[2.0.12t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.12
 [2.0.11]: https://github.com/kettle-dev/kettle-test/compare/v2.0.10...v2.0.11
 [2.0.11t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.11
 [2.0.10]: https://github.com/kettle-dev/kettle-test/compare/v2.0.9...v2.0.10
