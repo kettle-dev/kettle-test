@@ -242,5 +242,69 @@ RSpec.describe Kettle::Test do
         expect(stdout).to include("FAKE_BUNDLE_ARGS=<exec><turbo_tests2><spec/kettle/test_spec.rb:167>")
       end
     end
+
+    it "silences turbo_tests2 worker output when kettle-test silent mode is enabled" do
+      Dir.mktmpdir do |dir|
+        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        bin_dir = File.join(dir, "bin")
+        fake_bundle = File.join(bin_dir, "bundle")
+
+        FileUtils.mkdir_p(bin_dir)
+        File.write(File.join(dir, "kettle-test-summary.gemspec"), "Gem::Specification.new do |spec|\n  spec.name = 'kettle-test-summary'\nend\n")
+        File.write(fake_bundle, <<~BASH)
+          #!/usr/bin/env bash
+          printf 'FAKE_WORKER_OUTPUT=%s\\n' "$TURBO_TESTS2_WORKER_OUTPUT"
+          printf 'Finished in 0.01 seconds\\n'
+          printf '1 example, 0 failures\\n'
+        BASH
+        FileUtils.chmod("+x", fake_bundle)
+
+        env = {
+          "KETTLE_TEST_RUNNER" => "turbo_tests2",
+          "KETTLE_TEST_SILENT" => "true",
+          "K_SOUP_COV_DO" => "false",
+          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}",
+          "TURBO_TESTS2_WORKER_OUTPUT" => nil
+        }
+
+        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+
+        expect(status).to be_success
+        expect(stderr).to eq("")
+        expect(stdout).to include("FAKE_WORKER_OUTPUT=quiet")
+      end
+    end
+
+    it "preserves explicit turbo_tests2 worker output mode" do
+      Dir.mktmpdir do |dir|
+        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        bin_dir = File.join(dir, "bin")
+        fake_bundle = File.join(bin_dir, "bundle")
+
+        FileUtils.mkdir_p(bin_dir)
+        File.write(File.join(dir, "kettle-test-summary.gemspec"), "Gem::Specification.new do |spec|\n  spec.name = 'kettle-test-summary'\nend\n")
+        File.write(fake_bundle, <<~BASH)
+          #!/usr/bin/env bash
+          printf 'FAKE_WORKER_OUTPUT=%s\\n' "$TURBO_TESTS2_WORKER_OUTPUT"
+          printf 'Finished in 0.01 seconds\\n'
+          printf '1 example, 0 failures\\n'
+        BASH
+        FileUtils.chmod("+x", fake_bundle)
+
+        env = {
+          "KETTLE_TEST_RUNNER" => "turbo_tests2",
+          "KETTLE_TEST_SILENT" => "true",
+          "K_SOUP_COV_DO" => "false",
+          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}",
+          "TURBO_TESTS2_WORKER_OUTPUT" => "warnings"
+        }
+
+        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+
+        expect(status).to be_success
+        expect(stderr).to eq("")
+        expect(stdout).to include("FAKE_WORKER_OUTPUT=warnings")
+      end
+    end
   end
 end

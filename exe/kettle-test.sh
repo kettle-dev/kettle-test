@@ -23,6 +23,7 @@
 #   KETTLE_TEST_TURBO_PROCESSES    - passed to turbo_tests2 -n
 #   KETTLE_TEST_TURBO_RUNTIME_LOG  - passed to turbo_tests2 --runtime-log
 #   KETTLE_TEST_TURBO_NICE         - set true to pass turbo_tests2 --nice
+#   TURBO_TESTS2_WORKER_OUTPUT     - passed through when explicitly set
 #
 # Examples:
 #   bundle exec kettle-test
@@ -55,6 +56,7 @@ Environment:
   KETTLE_TEST_TURBO_PROCESSES    Passed to turbo_tests2 -n
   KETTLE_TEST_TURBO_RUNTIME_LOG  Passed to turbo_tests2 --runtime-log
   KETTLE_TEST_TURBO_NICE         Set true to pass turbo_tests2 --nice
+  TURBO_TESTS2_WORKER_OUTPUT     Passed through when explicitly set
   K_SOUP_COV_DO                  Set true to enable coverage
   K_SOUP_COV_MIN_HARD            Set true to hard-fail on coverage thresholds
 
@@ -115,6 +117,23 @@ TIMESTAMP="$(date -u +%Y%m%d-%H%M%S)"
 RUNNER="${KETTLE_TEST_RUNNER:-turbo_tests2}"
 LOG_FILE="$LOG_DIR/${RUNNER}-${TIMESTAMP}-$$.log"
 
+silent_enabled() {
+  local configured_silent="${KETTLE_TEST_SILENT:-}"
+
+  if [ -n "$configured_silent" ]; then
+    case "$configured_silent" in
+      true|TRUE|True)
+        return 0
+        ;;
+      *)
+        return 1
+        ;;
+    esac
+  fi
+
+  [ "${CI:-}" = "true" ] || [ "${CI:-}" = "TRUE" ]
+}
+
 run_kettle_soup_cover_hook() {
   local hook="$1"
 
@@ -135,6 +154,9 @@ cd "$PROJECT_ROOT"
 case "$RUNNER" in
   turbo|turbo_tests2)
     export PARALLEL_TEST_FIRST_IS_1="${PARALLEL_TEST_FIRST_IS_1:-true}"
+    if [ -z "${TURBO_TESTS2_WORKER_OUTPUT:-}" ] && silent_enabled; then
+      export TURBO_TESTS2_WORKER_OUTPUT="quiet"
+    fi
     run_kettle_soup_cover_hook "clear_turbo_tests_coverage_dir!"
     command=(bundle exec turbo_tests2)
     if [ -n "${KETTLE_TEST_TURBO_PROCESSES:-}" ]; then

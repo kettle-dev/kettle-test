@@ -196,7 +196,11 @@ Below are the environment variables recognized by kettle-test. Unless otherwise 
     - Default: unset/empty → treated as false.
 - KETTLE_TEST_SILENT (String: "true"/"false")
     - Controls silencing of STDOUT/STDERR during specs (unless :check_output is used or DEBUG is true).
+    - When true with the default turbo_tests2 runner, sets TURBO_TESTS2_WORKER_OUTPUT=quiet unless already set.
     - Default: value of CI (true on CI, false locally unless CI=true).
+- TURBO_TESTS2_WORKER_OUTPUT (String)
+    - Explicit turbo_tests2 worker output mode. When set, kettle-test preserves it.
+    - Default: quiet when KETTLE_TEST_SILENT is true; otherwise turbo_tests2's own default.
 - KETTLE_TEST_VERBOSE (String: "true"/"false")
     - Reserved for future verbose logging toggles. Default: "false".
 - KETTLE_TEST_FULL_BACKTRACE (String: "true"/"false")
@@ -360,7 +364,7 @@ end
 
 ### Silencing output and checking output
 
-STDOUT/STDERR are silenced by default when KETTLE_TEST_SILENT is true (defaults to true on CI). To assert output from the code under test, tag examples/groups with :check_output, or run with DEBUG=true to disable silencing globally.
+STDOUT/STDERR are silenced by default when KETTLE_TEST_SILENT is true (defaults to true on CI). With the default turbo_tests2 runner, worker output summaries are also quiet by default in silent mode. To assert output from the code under test, tag examples/groups with :check_output, or run with DEBUG=true to disable silencing globally.
 
 ```ruby
 RSpec.describe("output", :check_output) do

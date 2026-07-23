@@ -28,6 +28,10 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- `kettle-test` now sets turbo_tests2 worker output to `quiet` by default when
+  kettle-test silent mode is enabled, while preserving an explicit
+  `TURBO_TESTS2_WORKER_OUTPUT` override.
+
 ### Security
 
 ## [2.0.12] - 2026-07-21
