@@ -28,10 +28,19 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+### Security
+
+## [2.0.14] - 2026-07-23
+
+- TAG: [v2.0.14][2.0.14t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 90.00% documented
+
+### Fixed
+
 - Final run highlights now deduplicate identical failed-example lines emitted
   more than once by runner output streams.
-
-### Security
 
 ## [2.0.13] - 2026-07-22
 
@@ -452,7 +461,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.13...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.14...HEAD
+[2.0.14]: https://github.com/kettle-dev/kettle-test/compare/v2.0.13...v2.0.14
+[2.0.14t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.14
 [2.0.13]: https://github.com/kettle-dev/kettle-test/compare/v2.0.12...v2.0.13
 [2.0.13t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.13
 [2.0.12]: https://github.com/kettle-dev/kettle-test/compare/v2.0.11...v2.0.12
