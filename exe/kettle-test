@@ -1,6 +1,15 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require_relative "../lib/kettle/test/version"
+
+script_basename = File.basename(__FILE__)
+if ARGV.any? { |arg| arg == "-v" || arg == "--version" }
+  puts Kettle::Test::Version::VERSION
+  exit(0)
+end
+puts "== #{script_basename} v#{Kettle::Test::Version::VERSION} =="
+
 bin_dir = File.expand_path(__dir__)
 bash_script = File.join(bin_dir, "kettle-test.sh")
 

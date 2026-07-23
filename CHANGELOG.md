@@ -22,6 +22,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
+- The `kettle-test` executable now supports `-v` / `--version` and prints a
+  standard startup header before invoking the test runner.
+
 ### Deprecated
 
 ### Removed
