@@ -28,6 +28,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Final run highlights now deduplicate identical failed-example lines emitted
+  more than once by runner output streams.
+
 ### Security
 
 ## [2.0.13] - 2026-07-22

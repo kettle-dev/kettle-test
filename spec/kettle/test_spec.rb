@@ -206,6 +206,39 @@ RSpec.describe Kettle::Test do
       end
     end
 
+    it "deduplicates repeated failed examples in the run highlights" do
+      Dir.mktmpdir do |dir|
+        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        bin_dir = File.join(dir, "bin")
+        fake_bundle = File.join(bin_dir, "bundle")
+
+        FileUtils.mkdir_p(bin_dir)
+        File.write(File.join(dir, "kettle-test-summary.gemspec"), "Gem::Specification.new do |spec|\n  spec.name = 'kettle-test-summary'\nend\n")
+        File.write(fake_bundle, <<~BASH)
+          #!/usr/bin/env bash
+          printf 'Finished in 0.01 seconds\\n'
+          printf '1 example, 1 failure\\n'
+          printf 'rspec ./spec/example_spec.rb:12 # example fails\\n'
+          printf 'rspec ./spec/example_spec.rb:12 # example fails\\n'
+          exit 1
+        BASH
+        FileUtils.chmod("+x", fake_bundle)
+
+        env = {
+          "KETTLE_TEST_RUNNER" => "rspec",
+          "K_SOUP_COV_DO" => "false",
+          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+        }
+
+        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+
+        expect(status.exitstatus).to eq(1)
+        expect(stderr).to eq("")
+        expect(stdout).to include("Failed examples (1):")
+        expect(stdout.scan("rspec ./spec/example_spec.rb:12 # example fails").size).to eq(3)
+      end
+    end
+
     it "forwards RSpec file:line selectors to the turbo_tests2 runner" do
       Dir.mktmpdir do |dir|
         script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)

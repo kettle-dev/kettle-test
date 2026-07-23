@@ -205,7 +205,7 @@ finished_line=$(clean_log | grep -E '^Finished in' | tail -1 || true)
 seed_line=$(clean_log | grep -E '^Randomized with seed' | tail -1 || true)
 
 # Failed examples block (rspec ./path:N # description)
-failed_block=$(clean_log | grep -E '^rspec \./.*#' || true)
+failed_block=$(clean_log | grep -E '^rspec \./.*#' | awk '!seen[$0]++' || true)
 failed_count=$(printf '%s\n' "$failed_block" | grep -c 'rspec \.' || true)
 failed_count=${failed_count:-0}
 
