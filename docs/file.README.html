@@ -451,7 +451,14 @@ require &quot;gem-under-test&quot;
   <li>KETTLE_TEST_SILENT (String: “true”/”false”)
     <ul>
       <li>Controls silencing of STDOUT/STDERR during specs (unless :check_output is used or DEBUG is true).</li>
+      <li>When true with the default turbo_tests2 runner, sets TURBO_TESTS2_WORKER_OUTPUT=quiet unless already set.</li>
       <li>Default: value of CI (true on CI, false locally unless CI=true).</li>
+    </ul>
+  </li>
+  <li>TURBO_TESTS2_WORKER_OUTPUT (String)
+    <ul>
+      <li>Explicit turbo_tests2 worker output mode. When set, kettle-test preserves it.</li>
+      <li>Default: quiet when KETTLE_TEST_SILENT is true; otherwise turbo_tests2’s own default.</li>
     </ul>
   </li>
   <li>KETTLE_TEST_VERBOSE (String: “true”/”false”)
@@ -624,7 +631,7 @@ end
 
 <h3 id="silencing-output-and-checking-output">Silencing output and checking output</h3>
 
-<p>STDOUT/STDERR are silenced by default when KETTLE_TEST_SILENT is true (defaults to true on CI). To assert output from the code under test, tag examples/groups with :check_output, or run with DEBUG=true to disable silencing globally.</p>
+<p>STDOUT/STDERR are silenced by default when KETTLE_TEST_SILENT is true (defaults to true on CI). With the default turbo_tests2 runner, worker output summaries are also quiet by default in silent mode. To assert output from the code under test, tag examples/groups with :check_output, or run with DEBUG=true to disable silencing globally.</p>
 
 <pre class="code language-ruby"><code class="language-ruby">RSpec.describe(&quot;output&quot;, :check_output) do
   it &quot;prints&quot; do

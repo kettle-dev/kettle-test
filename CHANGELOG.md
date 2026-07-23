@@ -28,11 +28,20 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+### Security
+
+## [2.0.13] - 2026-07-22
+
+- TAG: [v2.0.13][2.0.13t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 90.00% documented
+
+### Fixed
+
 - `kettle-test` now sets turbo_tests2 worker output to `quiet` by default when
   kettle-test silent mode is enabled, while preserving an explicit
   `TURBO_TESTS2_WORKER_OUTPUT` override.
-
-### Security
 
 ## [2.0.12] - 2026-07-21
 
@@ -440,7 +449,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.12...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.13...HEAD
+[2.0.13]: https://github.com/kettle-dev/kettle-test/compare/v2.0.12...v2.0.13
+[2.0.13t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.13
 [2.0.12]: https://github.com/kettle-dev/kettle-test/compare/v2.0.11...v2.0.12
 [2.0.12t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.12
 [2.0.11]: https://github.com/kettle-dev/kettle-test/compare/v2.0.10...v2.0.11
