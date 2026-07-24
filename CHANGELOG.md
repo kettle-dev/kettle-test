@@ -31,6 +31,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- The `kettle-test` executable now uses normal `require` loading for its version
+  file, avoiding `require_relative` lint drift in shipped executables.
+
 ### Security
 
 ## [2.0.14] - 2026-07-23
