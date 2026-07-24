@@ -105,7 +105,7 @@ GEM
       tty-progressbar (~> 0.18)
       version_gem (~> 1.1, >= 1.1.14)
     kettle-rb (0.1.5)
-    kettle-soup-cover (3.0.5)
+    kettle-soup-cover (3.0.4)
       kettle-wash (~> 0.1, >= 0.1.0)
       simplecov (>= 1.0)
       simplecov-cobertura (>= 4.0)
