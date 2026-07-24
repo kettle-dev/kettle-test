@@ -22,19 +22,30 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- The `kettle-test` executable now supports `-v` / `--version` and prints a
-  standard startup header before invoking the test runner.
-
 ### Deprecated
 
 ### Removed
 
 ### Fixed
 
+### Security
+
+## [2.0.15] - 2026-07-23
+
+- TAG: [v2.0.15][2.0.15t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 90.00% documented
+
+### Changed
+
+- The `kettle-test` executable now supports `-v` / `--version` and prints a
+  standard startup header before invoking the test runner.
+
+### Fixed
+
 - The `kettle-test` executable now uses normal `require` loading for its version
   file, avoiding `require_relative` lint drift in shipped executables.
-
-### Security
 
 ## [2.0.14] - 2026-07-23
 
@@ -467,7 +478,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.14...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.15...HEAD
+[2.0.15]: https://github.com/kettle-dev/kettle-test/compare/v2.0.14...v2.0.15
+[2.0.15t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.15
 [2.0.14]: https://github.com/kettle-dev/kettle-test/compare/v2.0.13...v2.0.14
 [2.0.14t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.14
 [2.0.13]: https://github.com/kettle-dev/kettle-test/compare/v2.0.12...v2.0.13
