@@ -3,7 +3,7 @@
 module Kettle
   module Test
     module Version
-      VERSION = "2.0.15"
+      VERSION = "2.0.16"
     end
     VERSION = Version::VERSION # Traditional Constant Location
   end
