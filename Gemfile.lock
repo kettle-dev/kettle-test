@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kettle-test (2.0.15)
+    kettle-test (2.0.16)
       appraisal2 (~> 3.0, >= 3.0.6)
       backports (~> 3.0)
       rspec (~> 3.0)
@@ -95,7 +95,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.21.1)
-    kettle-dev (2.4.5)
+    kettle-dev (2.4.6)
       emoji_regex (>= 15.0)
       kettle-gha-pins (~> 0.3, >= 0.3.1)
       kettle-ndjson (~> 0.1, >= 0.1.1)
@@ -110,7 +110,7 @@ GEM
     kettle-ndjson (0.1.1)
       version_gem (~> 1.1, >= 1.1.14)
     kettle-rb (0.1.5)
-    kettle-soup-cover (3.0.5)
+    kettle-soup-cover (3.0.6)
       kettle-wash (~> 0.1, >= 0.1.0)
       simplecov (>= 1.0)
       simplecov-cobertura (>= 4.0)
@@ -129,7 +129,7 @@ GEM
     mutex_m (0.3.0)
     nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
-    nomono (1.1.0)
+    nomono (1.1.1)
     openssl (4.0.2)
     ostruct (0.6.3)
     parallel (1.28.0)
