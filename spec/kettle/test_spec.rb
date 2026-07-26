@@ -114,6 +114,32 @@ RSpec.describe Kettle::Test do
   end
 
   describe "executable help" do
+    it "does not print the wrapper header by default" do
+      Dir.mktmpdir do |dir|
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
+        env = {"RUBYLIB" => File.expand_path("../../lib", __dir__.to_s)}
+
+        stdout, stderr, status = Open3.capture3(env, RbConfig.ruby, script, "--help", chdir: dir)
+
+        expect(status).to be_success
+        expect(stderr).to eq("")
+        expect(stdout).not_to include("== kettle-test v#{Kettle::Test::Version::VERSION} ==")
+      end
+    end
+
+    it "prints the wrapper header when verbose output is requested" do
+      Dir.mktmpdir do |dir|
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
+        env = {"RUBYLIB" => File.expand_path("../../lib", __dir__.to_s)}
+
+        stdout, stderr, status = Open3.capture3(env, RbConfig.ruby, script, "--verbose", "--help", chdir: dir)
+
+        expect(status).to be_success
+        expect(stderr).to eq("")
+        expect(stdout).to start_with("== kettle-test v#{Kettle::Test::Version::VERSION} ==\n")
+      end
+    end
+
     it "prints usage without running specs or creating a log directory" do
       Dir.mktmpdir do |dir|
         script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
@@ -123,7 +149,7 @@ RSpec.describe Kettle::Test do
         expect(status).to be_success
         expect(stderr).to eq("")
         expect(stdout).to include("Usage:")
-        expect(stdout).to include("bundle exec kettle-test [SPEC_ARGS...]")
+        expect(stdout).to include("bundle exec kettle-test [--verbose] [SPEC_ARGS...]")
         expect(File.exist?(File.join(dir, "tmp", "kettle-test"))).to be(false)
       end
     end

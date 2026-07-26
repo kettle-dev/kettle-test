@@ -11,7 +11,10 @@ if ARGV.any? { |arg| arg == "-v" || arg == "--version" }
   puts Kettle::Test::Version::VERSION
   exit(0)
 end
-puts "== #{script_basename} v#{Kettle::Test::Version::VERSION} =="
+if ARGV.delete("--verbose")
+  puts "== #{script_basename} v#{Kettle::Test::Version::VERSION} =="
+  $stdout.flush
+end
 
 bin_dir = File.expand_path(__dir__)
 bash_script = File.join(bin_dir, "kettle-test.sh")

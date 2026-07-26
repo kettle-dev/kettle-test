@@ -4,7 +4,7 @@
 # Provided by the kettle-test gem.
 #
 # Usage:
-#   bundle exec kettle-test [SPEC_ARGS...]
+#   bundle exec kettle-test [--verbose] [SPEC_ARGS...]
 #
 # By default this runs `bundle exec turbo_tests2`, so projects get parallel
 # RSpec execution with the same command used by CI and Rake tasks. Set
@@ -39,7 +39,7 @@ for arg in "$@"; do
     -h|--help)
       cat <<'HELP'
 Usage:
-  bundle exec kettle-test [SPEC_ARGS...]
+  bundle exec kettle-test [--verbose] [SPEC_ARGS...]
 
 Runs RSpec through the configured runner and prints a compact summary.
 
@@ -49,6 +49,7 @@ By default this uses:
 Set KETTLE_TEST_RUNNER=rspec to force direct RSpec execution.
 
 Options:
+  --verbose     Show the executable startup header.
   -h, --help    Show this help and exit without running specs.
 
 Environment:
