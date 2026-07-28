@@ -28,6 +28,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- TruffleRuby dep-heads CI now uses current RubyGems and Bundler during setup,
+  avoiding setup failures before the test suite starts.
+
 ### Security
 
 ## [2.0.16] - 2026-07-28
