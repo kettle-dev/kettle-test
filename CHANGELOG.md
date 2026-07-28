@@ -20,6 +20,25 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [2.0.16] - 2026-07-28
+
+- TAG: [v2.0.16][2.0.16t]
+- COVERAGE: 92.63% -- 88/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 100.00% documented
+
+### Added
+
 - kettle-jem-template-20260726-001 - Projects now include YARD lint
   configuration and documentation dependencies so documentation issues fail
   before generated docs are refreshed.
@@ -43,10 +62,6 @@ Please file a bug if you notice a violation of semantic versioning.
   setup-ruby-flash planning and can prepare appraisal-only jobs without
   installing the main Gemfile bundle.
 
-### Deprecated
-
-### Removed
-
 ### Fixed
 
 - kettle-jem-template-20260726-002 - Generated version files now document their
@@ -58,8 +73,6 @@ Please file a bug if you notice a violation of semantic versioning.
 - kettle-jem-template-20260728-002 - Generated RuboCop configs now ignore the
   same `gemfiles/vendor/bundle` tree as `.gitignore`, so vendored dependency
   installs are not reported as project lint debt.
-
-### Security
 
 ## [2.0.15] - 2026-07-24
 
@@ -509,7 +522,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.15...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.16...HEAD
+[2.0.16]: https://github.com/kettle-dev/kettle-test/compare/v2.0.15...v2.0.16
+[2.0.16t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.16
 [2.0.15]: https://github.com/kettle-dev/kettle-test/compare/v2.0.14...v2.0.15
 [2.0.15t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.15
 [2.0.14]: https://github.com/kettle-dev/kettle-test/compare/v2.0.13...v2.0.14

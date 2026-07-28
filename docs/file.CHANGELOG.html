@@ -70,7 +70,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 and <a href="https://tom.preston-werner.com/2022/05/23/major-version-numbers-are-not-sacred.html">yes</a>, platform and engine support are part of the <a href="https://github.com/semver/semver/issues/716#issuecomment-869336139">public API</a>.<br>
 Please file a bug if you notice a violation of semantic versioning.</p>
 
-<h2 id="unreleased"><a href="https://github.com/kettle-dev/kettle-test/compare/v2.0.15...HEAD">Unreleased</a></h2>
+<h2 id="unreleased"><a href="https://github.com/kettle-dev/kettle-test/compare/v2.0.16...HEAD">Unreleased</a></h2>
 
 <h3 id="added">Added</h3>
 
@@ -84,6 +84,66 @@ Please file a bug if you notice a violation of semantic versioning.</p>
 
 <h3 id="security">Security</h3>
 
+<h2 id="2016---2026-07-28">
+<a href="https://github.com/kettle-dev/kettle-test/compare/v2.0.15...v2.0.16">2.0.16</a> - 2026-07-28</h2>
+
+<ul>
+  <li>TAG: <a href="https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.16">v2.0.16</a>
+</li>
+  <li>COVERAGE: 92.63% – 88/95 lines in 17 files</li>
+  <li>BRANCH COVERAGE: 100.00% – 2/2 branches in 17 files</li>
+  <li>100.00% documented</li>
+</ul>
+
+<h3 id="added-1">Added</h3>
+
+<ul>
+  <li>
+    <p>kettle-jem-template-20260726-001 - Projects now include YARD lint<br>
+configuration and documentation dependencies so documentation issues fail<br>
+before generated docs are refreshed.</p>
+  </li>
+  <li>
+    <p>kettle-jem-template-20260727-001 - Spec harness documentation now lists the<br>
+RSpec helpers provided by <code>kettle-test</code>.</p>
+  </li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+
+<ul>
+  <li>
+    <p>The <code>kettle-test</code> executable startup header is now shown only when<br>
+<code>--verbose</code> is passed; <code>-v</code> and <code>--version</code> still print just the executable<br>
+version and exit.</p>
+  </li>
+  <li>kettle-jem-template-20260725-001 - Release pull request branches beginning<br>
+with <code>feature/release</code> now run JRuby and TruffleRuby workflows.</li>
+  <li>
+    <p>kettle-jem-template-20260725-002 - Version specs now use <code>anonymous_loader</code> to<br>
+cover <code>version.rb</code> without redefining constants, or are removed when version<br>
+specs are not managed for the project.</p>
+  </li>
+  <li>kettle-jem-template-20260728-001 - Generated Ruby workflows now use clearer<br>
+setup-ruby-flash planning and can prepare appraisal-only jobs without<br>
+installing the main Gemfile bundle.</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+
+<ul>
+  <li>
+    <p>kettle-jem-template-20260726-002 - Generated version files now document their<br>
+version namespace and constants, reducing warning-only YARD lint output.</p>
+  </li>
+  <li>kettle-jem-template-20260726-003 - Coverage upload steps now treat Coveralls,<br>
+QLTY, and Codecov as optional, so provider outages do not fail CI when local<br>
+coverage thresholds still pass.</li>
+  <li>kettle-jem-template-20260728-002 - Generated RuboCop configs now ignore the<br>
+same <code>gemfiles/vendor/bundle</code> tree as <code>.gitignore</code>, so vendored dependency<br>
+installs are not reported as project lint debt.</li>
+</ul>
+
 <h2 id="2015---2026-07-24">
 <a href="https://github.com/kettle-dev/kettle-test/compare/v2.0.14...v2.0.15">2.0.15</a> - 2026-07-24</h2>
 
@@ -95,14 +155,14 @@ Please file a bug if you notice a violation of semantic versioning.</p>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 
 <ul>
   <li>The <code>kettle-test</code> executable now supports <code>-v</code> / <code>--version</code> and prints a<br>
 standard startup header before invoking the test runner.</li>
 </ul>
 
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 
 <ul>
   <li>The <code>kettle-test</code> executable now uses normal <code>require</code> loading for its version<br>
@@ -120,7 +180,7 @@ file, avoiding <code>require_relative</code> lint drift in shipped executables.<
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 
 <ul>
   <li>Final run highlights now deduplicate identical failed-example lines emitted<br>
@@ -138,7 +198,7 @@ more than once by runner output streams.</li>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 
 <ul>
   <li>
@@ -158,7 +218,7 @@ kettle-test silent mode is enabled, while preserving an explicit<br>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 
 <ul>
   <li>kettle-jem-template-20260716-001 - Shim gemspec manifests now include<br>
@@ -190,7 +250,7 @@ now include a RubyForum help badge.</li>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 
 <ul>
   <li>
@@ -209,7 +269,7 @@ selectors are forwarded unchanged to the default <code>turbo_tests2</code> runne
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 
 <ul>
   <li>
@@ -228,7 +288,7 @@ selectors are forwarded unchanged to the default <code>turbo_tests2</code> runne
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 
 <ul>
   <li>Package configured license files in gem release file lists.</li>
@@ -245,7 +305,7 @@ selectors are forwarded unchanged to the default <code>turbo_tests2</code> runne
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 
 <ul>
   <li>Runtime dependency <code>rspec-stubbed_env</code> now requires v1.0.5 or newer.</li>
@@ -262,7 +322,7 @@ selectors are forwarded unchanged to the default <code>turbo_tests2</code> runne
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 
 <ul>
   <li>Updated to latest kettle-jem template
@@ -284,7 +344,7 @@ selectors are forwarded unchanged to the default <code>turbo_tests2</code> runne
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 
 <ul>
   <li>
@@ -295,7 +355,7 @@ selectors are forwarded unchanged to the default <code>turbo_tests2</code> runne
   </li>
 </ul>
 
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 
 <ul>
   <li>Retemplated project metadata and CI/development automation with <code>kettle-jem</code> v7.0.0.</li>
@@ -313,7 +373,7 @@ selectors are forwarded unchanged to the default <code>turbo_tests2</code> runne
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 
 <ul>
   <li>
@@ -326,7 +386,7 @@ and <code>yard-fence</code> 0.9.3.</p>
   </li>
 </ul>
 
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 
 <ul>
   <li>
@@ -349,14 +409,14 @@ GitHub organization.</p>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 
 <ul>
   <li>Retemplated project workflows with the current kettle-jem template and raised<br>
 the runtime <code>turbo_tests2</code> dependency floor to v3.1.2.</li>
 </ul>
 
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 
 <ul>
   <li>
@@ -375,7 +435,7 @@ the randomization seed needed to reproduce order-dependent failures.</li>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 
 <ul>
   <li>Retemplated project files with the current kettle-jem template, including<br>
@@ -384,7 +444,7 @@ refreshed coverage and style dependency floors.</li>
   <li>Updated to latest versions of other dependencies</li>
 </ul>
 
-<h3 id="fixed-8">Fixed</h3>
+<h3 id="fixed-9">Fixed</h3>
 
 <ul>
   <li>Made the ENV-driven configuration spec explicitly remove nil-valued child<br>
@@ -402,7 +462,7 @@ process overrides so JRuby 9.2 does not inherit <code>KETTLE_TEST_SILENT=false</
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 
 <ul>
   <li>Retemplated project files with the current kettle-jem template, including the<br>
@@ -411,7 +471,7 @@ refresh, and updated development dependency floors.</li>
   <li>Updated the runtime <code>turbo_tests2</code> dependency to require v3.1.0 or newer.</li>
 </ul>
 
-<h3 id="fixed-9">Fixed</h3>
+<h3 id="fixed-10">Fixed</h3>
 
 <ul>
   <li>
@@ -431,7 +491,7 @@ root-level <code>coverage/</code> and <code>tmp/</code> instead of being written
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="changed-11">Changed</h3>
+<h3 id="changed-12">Changed</h3>
 
 <ul>
   <li>Refreshed generated project templates and CI workflows.</li>
@@ -442,7 +502,7 @@ release.</li>
   <li>Updated the coverage bundle to require <code>kettle-soup-cover</code> 1.1.3 or newer.</li>
 </ul>
 
-<h3 id="fixed-10">Fixed</h3>
+<h3 id="fixed-11">Fixed</h3>
 
 <ul>
   <li>
@@ -466,7 +526,7 @@ optional turbo coverage rake tasks.</li>
   <li>90.00% documented</li>
 </ul>
 
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 
 <ul>
   <li>Added the <code>kettle-test</code> executable, which runs RSpec through Bundler, captures<br>
@@ -476,7 +536,7 @@ timing, and coverage summary.</li>
 helpers and configuration constants.</li>
 </ul>
 
-<h3 id="changed-12">Changed</h3>
+<h3 id="changed-13">Changed</h3>
 
 <ul>
   <li>
@@ -506,14 +566,14 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>100.00% documented</li>
 </ul>
 
-<h3 id="changed-13">Changed</h3>
+<h3 id="changed-14">Changed</h3>
 
 <ul>
   <li>Upgraded to <a href="https://github.com/appraisal-rb/appraisal2/releases/tag/v3.0.1">appraisal2 v3.0.1</a>
 </li>
 </ul>
 
-<h3 id="fixed-11">Fixed</h3>
+<h3 id="fixed-12">Fixed</h3>
 
 <ul>
   <li>removed redundant development dependencies</li>
@@ -530,7 +590,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>100.00% documented</li>
 </ul>
 
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 
 <ul>
   <li>Document usage of rspec-pending_for</li>
@@ -547,7 +607,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>100.00% documented</li>
 </ul>
 
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 
 <ul>
   <li>rspec/pending_for made available by default
@@ -558,7 +618,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   </li>
 </ul>
 
-<h3 id="changed-14">Changed</h3>
+<h3 id="changed-15">Changed</h3>
 
 <ul>
   <li>Updated documentation on hostile takeover of RubyGems
@@ -579,7 +639,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>100.00% documented</li>
 </ul>
 
-<h3 id="added-5">Added</h3>
+<h3 id="added-6">Added</h3>
 
 <ul>
   <li>traditional <code>Kettle::Test::VERSION</code> constant</li>
@@ -598,13 +658,13 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>94.44% documented</li>
 </ul>
 
-<h3 id="added-6">Added</h3>
+<h3 id="added-7">Added</h3>
 
 <ul>
   <li>more complete usage documentation</li>
 </ul>
 
-<h3 id="fixed-12">Fixed</h3>
+<h3 id="fixed-13">Fixed</h3>
 
 <ul>
   <li>completed change of backports to runtime dependency</li>
@@ -621,7 +681,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>94.44% documented</li>
 </ul>
 
-<h3 id="added-7">Added</h3>
+<h3 id="added-8">Added</h3>
 
 <ul>
   <li>runtime dependency on rspec-pending_for</li>
@@ -638,14 +698,14 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>94.44% documented</li>
 </ul>
 
-<h3 id="added-8">Added</h3>
+<h3 id="added-9">Added</h3>
 
 <ul>
   <li>dependency on backports for Ruby 2.3 &amp; 2.4 support</li>
   <li>default config for rspec-pending_for</li>
 </ul>
 
-<h3 id="changed-15">Changed</h3>
+<h3 id="changed-16">Changed</h3>
 
 <ul>
   <li>upgraded kettle-dev to 1.1.34 for development</li>
@@ -662,14 +722,14 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>94.44% documented</li>
 </ul>
 
-<h3 id="added-9">Added</h3>
+<h3 id="added-10">Added</h3>
 
 <ul>
   <li>improved documentation in README.md</li>
   <li>opencollective funding links to README.md</li>
 </ul>
 
-<h3 id="changed-16">Changed</h3>
+<h3 id="changed-17">Changed</h3>
 
 <ul>
   <li>kettle-dev 1.0.18 for development</li>
@@ -698,7 +758,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>checksums from packaged gem</li>
 </ul>
 
-<h3 id="fixed-13">Fixed</h3>
+<h3 id="fixed-14">Fixed</h3>
 
 <ul>
   <li>gem packaged without checksums
@@ -725,13 +785,13 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>94.44% documented</li>
 </ul>
 
-<h3 id="added-10">Added</h3>
+<h3 id="added-11">Added</h3>
 
 <ul>
   <li>RSpec shared context: “with rake”</li>
 </ul>
 
-<h3 id="fixed-14">Fixed</h3>
+<h3 id="fixed-15">Fixed</h3>
 
 <ul>
   <li>Typos in README.md</li>
@@ -749,7 +809,7 @@ dependency and requires Ruby 2.4 or newer.</li>
   <li>94.44% documented</li>
 </ul>
 
-<h3 id="added-11">Added</h3>
+<h3 id="added-12">Added</h3>
 
 <ul>
   <li>initial release, with auto-config support for:
