@@ -139,9 +139,13 @@ version namespace and constants, reducing warning-only YARD lint output.</p>
   <li>kettle-jem-template-20260726-003 - Coverage upload steps now treat Coveralls,<br>
 QLTY, and Codecov as optional, so provider outages do not fail CI when local<br>
 coverage thresholds still pass.</li>
-  <li>kettle-jem-template-20260728-002 - Generated RuboCop configs now ignore the<br>
+  <li>
+    <p>kettle-jem-template-20260728-002 - Generated RuboCop configs now ignore the<br>
 same <code>gemfiles/vendor/bundle</code> tree as <code>.gitignore</code>, so vendored dependency<br>
-installs are not reported as project lint debt.</li>
+installs are not reported as project lint debt.</p>
+  </li>
+  <li>TruffleRuby dep-heads CI now uses current RubyGems and Bundler during setup,<br>
+avoiding setup failures before the test suite starts.</li>
 </ul>
 
 <h2 id="2015---2026-07-24">

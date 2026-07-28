@@ -28,9 +28,6 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
-- TruffleRuby dep-heads CI now uses current RubyGems and Bundler during setup,
-  avoiding setup failures before the test suite starts.
-
 ### Security
 
 ## [2.0.16] - 2026-07-28
@@ -76,6 +73,9 @@ Please file a bug if you notice a violation of semantic versioning.
 - kettle-jem-template-20260728-002 - Generated RuboCop configs now ignore the
   same `gemfiles/vendor/bundle` tree as `.gitignore`, so vendored dependency
   installs are not reported as project lint debt.
+
+- TruffleRuby dep-heads CI now uses current RubyGems and Bundler during setup,
+  avoiding setup failures before the test suite starts.
 
 ## [2.0.15] - 2026-07-24
 
