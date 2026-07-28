@@ -23,6 +23,7 @@ end
 # RSpec config provided by this library
 # NOTE: Also loads *this* library
 require "kettle/test/rspec"
+# `kettle/test/rspec` installs harness helpers documented in spec/README.md.
 
 # This library
 require "kettle/test"
