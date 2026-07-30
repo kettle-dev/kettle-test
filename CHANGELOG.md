@@ -28,6 +28,10 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Generated gemspec package file enumeration now avoids `Array#filter_map`, so
+  JRuby 9.2 / Ruby 2.5 workflow jobs can parse the gemspec during Bundler
+  install.
+
 ### Security
 
 ## [2.0.17] - 2026-07-30
