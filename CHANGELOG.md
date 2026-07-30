@@ -20,15 +20,28 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
-- kettle-jem-template-20260729-005 - Gemspec metadata now publishes this
-  project's RubyForum tag as `mailing_list_uri`, and support docs link to the
-  tagged RubyForum community alongside Discord.
-
 ### Changed
 
 ### Deprecated
 
 ### Removed
+
+### Fixed
+
+### Security
+
+## [2.0.17] - 2026-07-30
+
+- TAG: [v2.0.17][2.0.17t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 100.00% documented
+
+### Added
+
+- kettle-jem-template-20260729-005 - Gemspec metadata now publishes this
+  project's RubyForum tag as `mailing_list_uri`, and support docs link to the
+  tagged RubyForum community alongside Discord.
 
 ### Fixed
 
@@ -55,8 +68,6 @@ Please file a bug if you notice a violation of semantic versioning.
 - kettle-jem-template-20260730-001 - Gemspec package file enumeration now runs
   relative to the gemspec directory, so packaged template assets are included
   even when the gemspec is loaded from another working directory.
-
-### Security
 
 ## [2.0.16] - 2026-07-28
 
@@ -553,7 +564,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.16...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.17...HEAD
+[2.0.17]: https://github.com/kettle-dev/kettle-test/compare/v2.0.16...v2.0.17
+[2.0.17t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.17
 [2.0.16]: https://github.com/kettle-dev/kettle-test/compare/v2.0.15...v2.0.16
 [2.0.16t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.16
 [2.0.15]: https://github.com/kettle-dev/kettle-test/compare/v2.0.14...v2.0.15
