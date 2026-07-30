@@ -127,9 +127,14 @@ cover both <code>version.rb</code> and <code>version_gem.rb</code>.</li>
 floor now get managed minimal <code>version.rb</code> files and anonymous-loader version<br>
 specs without adding <code>version_gem</code>.</p>
   </li>
-  <li>kettle-jem-template-20260730-001 - Gemspec package file enumeration now runs<br>
+  <li>
+    <p>kettle-jem-template-20260730-001 - Gemspec package file enumeration now runs<br>
 relative to the gemspec directory, so packaged template assets are included<br>
-even when the gemspec is loaded from another working directory.</li>
+even when the gemspec is loaded from another working directory.</p>
+  </li>
+  <li>Generated gemspec package file enumeration now avoids <code>Array#filter_map</code>, so<br>
+JRuby 9.2 / Ruby 2.5 workflow jobs can parse the gemspec during Bundler<br>
+install.</li>
 </ul>
 
 <h2 id="2016---2026-07-28">
