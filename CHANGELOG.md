@@ -28,10 +28,19 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+### Security
+
+## [2.0.19] - 2026-08-02
+
+- TAG: [v2.0.19][2.0.19t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 100.00% documented
+
+### Fixed
+
 - kettle-jem-template-20260802-001 - Devcontainer JSON files now merge as JSONC,
   preserving comments and trailing commas during template updates.
-
-### Security
 
 ## [2.0.18] - 2026-08-01
 
@@ -581,7 +590,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.18...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.19...HEAD
+[2.0.19]: https://github.com/kettle-dev/kettle-test/compare/v2.0.18...v2.0.19
+[2.0.19t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.19
 [2.0.18]: https://github.com/kettle-dev/kettle-test/compare/v2.0.17...v2.0.18
 [2.0.18t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.18
 [2.0.17]: https://github.com/kettle-dev/kettle-test/compare/v2.0.16...v2.0.17
