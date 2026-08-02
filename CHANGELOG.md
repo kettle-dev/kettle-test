@@ -22,12 +22,25 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- kettle-jem-template-20260801-001 - Generated README gem dashboard links now
-  use ClickGems instead of BestGems.
-
 ### Deprecated
 
 ### Removed
+
+### Fixed
+
+### Security
+
+## [2.0.18] - 2026-08-01
+
+- TAG: [v2.0.18][2.0.18t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 100.00% documented
+
+### Changed
+
+- kettle-jem-template-20260801-001 - Generated README gem dashboard links now
+  use ClickGems instead of BestGems.
 
 ### Fixed
 
@@ -40,8 +53,6 @@ Please file a bug if you notice a violation of semantic versioning.
 - kettle-jem-template-20260801-004 - Generated organization README logos now
   use GitHub's stable organization avatar endpoint instead of assuming a
   matching Galtzo-hosted asset exists.
-
-### Security
 
 ## [2.0.17] - 2026-07-30
 
@@ -581,7 +592,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.17...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.18...HEAD
+[2.0.18]: https://github.com/kettle-dev/kettle-test/compare/v2.0.17...v2.0.18
+[2.0.18t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.18
 [2.0.17]: https://github.com/kettle-dev/kettle-test/compare/v2.0.16...v2.0.17
 [2.0.17t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.17
 [2.0.16]: https://github.com/kettle-dev/kettle-test/compare/v2.0.15...v2.0.16
