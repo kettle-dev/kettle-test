@@ -22,19 +22,30 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- Prepare project for kettle-jem templates: updated 11 project files across dependencies (11).
-
-- Apply kettle-jem templates: updated 7 project files across code and tests (1), configuration (1), dependencies (1), documentation (1), other (3).
-
 ### Deprecated
 
 ### Removed
 
 ### Fixed
 
-- Fix the README Configuration link so release Markdown reference validation resolves its heading anchor.
-
 ### Security
+
+## [2.0.20] - 2026-08-12
+
+- TAG: [v2.0.20][2.0.20t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 100.00% documented
+
+### Changed
+
+- Prepare project for kettle-jem templates: updated 11 project files across dependencies (11).
+
+- Apply kettle-jem templates: updated 7 project files across code and tests (1), configuration (1), dependencies (1), documentation (1), other (3).
+
+### Fixed
+
+- Fix the README Configuration link so release Markdown reference validation resolves its heading anchor.
 
 ## [2.0.19] - 2026-08-02
 
@@ -596,7 +607,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.19...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.20...HEAD
+[2.0.20]: https://github.com/kettle-dev/kettle-test/compare/v2.0.19...v2.0.20
+[2.0.20t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.20
 [2.0.19]: https://github.com/kettle-dev/kettle-test/compare/v2.0.18...v2.0.19
 [2.0.19t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.19
 [2.0.18]: https://github.com/kettle-dev/kettle-test/compare/v2.0.17...v2.0.18
