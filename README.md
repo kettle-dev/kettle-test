@@ -42,7 +42,7 @@ end
 require "gem-under-test"
 ```
 
-Now you have many powerful testing tools at your disposal, all fully [documented](#-configuration) and tested.
+Now you have many powerful testing tools at your disposal, all fully [documented](#configuration) and tested.
 
 I expect the current release of this gem to be compatible with Ruby 2.4+,
 and concordant releases of JRuby, and TruffleRuby.

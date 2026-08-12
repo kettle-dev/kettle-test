@@ -32,6 +32,8 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Fix the README Configuration link so release Markdown reference validation resolves its heading anchor.
+
 ### Security
 
 ## [2.0.19] - 2026-08-02
