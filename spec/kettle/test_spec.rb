@@ -265,6 +265,69 @@ RSpec.describe Kettle::Test do
       end
     end
 
+    it "marks the run failed when the runner exits non-zero without failed examples" do
+      Dir.mktmpdir do |dir|
+        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        bin_dir = File.join(dir, "bin")
+        fake_bundle = File.join(bin_dir, "bundle")
+
+        FileUtils.mkdir_p(bin_dir)
+        File.write(File.join(dir, "kettle-test-summary.gemspec"), "Gem::Specification.new do |spec|\n  spec.name = 'kettle-test-summary'\nend\n")
+        File.write(fake_bundle, <<~BASH)
+          #!/usr/bin/env bash
+          printf 'Finished in 0.01 seconds\\n'
+          printf '2 examples, 0 failures\\n'
+          exit 1
+        BASH
+        FileUtils.chmod("+x", fake_bundle)
+
+        env = {
+          "KETTLE_TEST_RUNNER" => "rspec",
+          "K_SOUP_COV_DO" => "false",
+          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+        }
+
+        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+
+        expect(status.exitstatus).to eq(1)
+        expect(stderr).to eq("")
+        expect(stdout).to include("❌  2 examples, 0 failures")
+        expect(stdout).not_to include("✅")
+        expect(stdout).to include("but the runner exited 1")
+      end
+    end
+
+    it "marks the run failed when errors occurred outside of examples" do
+      Dir.mktmpdir do |dir|
+        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        bin_dir = File.join(dir, "bin")
+        fake_bundle = File.join(bin_dir, "bundle")
+
+        FileUtils.mkdir_p(bin_dir)
+        File.write(File.join(dir, "kettle-test-summary.gemspec"), "Gem::Specification.new do |spec|\n  spec.name = 'kettle-test-summary'\nend\n")
+        File.write(fake_bundle, <<~BASH)
+          #!/usr/bin/env bash
+          printf 'Finished in 0.01 seconds\\n'
+          printf '1 example, 0 failures, 1 error occurred outside of examples\\n'
+          exit 1
+        BASH
+        FileUtils.chmod("+x", fake_bundle)
+
+        env = {
+          "KETTLE_TEST_RUNNER" => "rspec",
+          "K_SOUP_COV_DO" => "false",
+          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+        }
+
+        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+
+        expect(status.exitstatus).to eq(1)
+        expect(stderr).to eq("")
+        expect(stdout).to include("❌  1 example, 0 failures, 1 error occurred outside of examples")
+        expect(stdout).not_to include("✅")
+      end
+    end
+
     it "forwards RSpec file:line selectors to the turbo_tests2 runner" do
       Dir.mktmpdir do |dir|
         script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
