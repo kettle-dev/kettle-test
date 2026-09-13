@@ -28,6 +28,10 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- The run highlights no longer show a green check when the run failed without
+  failed examples (a non-zero runner exit, or errors outside of examples such
+  as a crashed parallel worker).
+
 ### Security
 
 ## [2.0.21] - 2026-08-28

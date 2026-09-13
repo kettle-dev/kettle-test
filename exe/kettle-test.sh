@@ -234,9 +234,15 @@ if [ -n "$seed_line" ]; then
 fi
 
 # Examples / failures / pending
+# The run failed when an example failed, an error occurred outside of examples
+# (for example a spec file or parallel worker that failed to load), or the
+# runner exited non-zero for any other reason.
 if [ -n "$summary_line" ]; then
-  if echo "$summary_line" | grep -qE ',\s*[1-9][0-9]* failure'; then
+  if echo "$summary_line" | grep -qE ',\s*[1-9][0-9]* (failure|errors? occurred outside)' || [ "$rspec_exit" -ne 0 ]; then
     printf '%b\n' "${RED}❌  ${summary_line}${RESET}"
+    if [ "$rspec_exit" -ne 0 ] && [ "$failed_count" -eq 0 ] 2>/dev/null; then
+      printf '%b\n' "${YELLOW}⚠️  No failed examples were listed, but the runner exited ${rspec_exit}; check the log for errors outside of examples or crashed workers.${RESET}"
+    fi
   else
     printf '%b\n' "${GREEN}✅  ${summary_line}${RESET}"
   fi
