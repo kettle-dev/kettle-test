@@ -28,11 +28,20 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+### Security
+
+## [2.0.22] - 2026-09-13
+
+- TAG: [v2.0.22][2.0.22t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 100.00% documented
+
+### Fixed
+
 - The run highlights no longer show a green check when the run failed without
   failed examples (a non-zero runner exit, or errors outside of examples such
   as a crashed parallel worker).
-
-### Security
 
 ## [2.0.21] - 2026-08-28
 
@@ -630,7 +639,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.21...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.22...HEAD
+[2.0.22]: https://github.com/kettle-dev/kettle-test/compare/v2.0.21...v2.0.22
+[2.0.22t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.22
 [2.0.21]: https://github.com/kettle-dev/kettle-test/compare/v2.0.20...v2.0.21
 [2.0.21t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.21
 [2.0.20]: https://github.com/kettle-dev/kettle-test/compare/v2.0.19...v2.0.20
