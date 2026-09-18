@@ -19,4 +19,5 @@ end
 bin_dir = File.expand_path(__dir__)
 bash_script = File.join(bin_dir, "kettle-test.sh")
 
-exec(bash_script, *ARGV)
+command = Gem.win_platform? ? ["bash", bash_script] : [bash_script]
+exec(*command, *ARGV)

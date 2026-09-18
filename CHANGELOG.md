@@ -28,6 +28,8 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- The kettle-test executable invokes its Bash runner explicitly on Windows platforms.
+
 ### Security
 
 ## [2.0.22] - 2026-09-13
