@@ -20,6 +20,25 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [2.0.23] - 2026-09-26
+
+- TAG: [v2.0.23][2.0.23t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 100.00% documented
+
+### Added
+
 - kettle-jem-template-20260913-001 - Templating now also surfaces a review
   entry in `dependency_conflicts.resolve` when a direct development
   dependency doesn't support one or more of this project's declared
@@ -38,15 +57,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - other (1)
   - workflows (30)
 
-### Deprecated
-
-### Removed
-
 ### Fixed
 
 - The kettle-test executable invokes its Bash runner explicitly on Windows platforms.
-
-### Security
 
 ## [2.0.22] - 2026-09-13
 
@@ -657,7 +670,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.22...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.23...HEAD
+[2.0.23]: https://github.com/kettle-dev/kettle-test/compare/v2.0.22...v2.0.23
+[2.0.23t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.23
 [2.0.22]: https://github.com/kettle-dev/kettle-test/compare/v2.0.21...v2.0.22
 [2.0.22t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.22
 [2.0.21]: https://github.com/kettle-dev/kettle-test/compare/v2.0.20...v2.0.21
