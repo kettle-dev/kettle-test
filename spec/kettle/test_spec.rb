@@ -51,6 +51,20 @@ RSpec.describe Kettle::Test do
     JSON.parse(stdout)
   end
 
+  def capture_kettle_test(script, *args, chdir:, env: {})
+    clean_env = {
+      "BUNDLE_BIN_PATH" => nil,
+      "BUNDLE_GEMFILE" => nil,
+      "BUNDLE_LOCKFILE" => nil,
+      "RUBYOPT" => nil
+    }.merge(env)
+    Open3.capture3(clean_env, RbConfig.ruby, script, *args, chdir: chdir)
+  end
+
+  def path_with_prefix(path, prefix)
+    "#{prefix}#{File::PATH_SEPARATOR}#{path}"
+  end
+
   describe "::is_parallel_test?" do
     it "returns false when TEST_ENV_NUMBER is not set" do
       stub_env("TEST_ENV_NUMBER" => nil)
@@ -119,7 +133,7 @@ RSpec.describe Kettle::Test do
         script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         env = {"RUBYLIB" => File.expand_path("../../lib", __dir__.to_s)}
 
-        stdout, stderr, status = Open3.capture3(env, RbConfig.ruby, script, "--help", chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, "--help", env: env, chdir: dir)
 
         expect(status).to be_success
         expect(stderr).to eq("")
@@ -132,7 +146,7 @@ RSpec.describe Kettle::Test do
         script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         env = {"RUBYLIB" => File.expand_path("../../lib", __dir__.to_s)}
 
-        stdout, stderr, status = Open3.capture3(env, RbConfig.ruby, script, "--verbose", "--help", chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, "--verbose", "--help", env: env, chdir: dir)
 
         expect(status).to be_success
         expect(stderr).to eq("")
@@ -142,9 +156,9 @@ RSpec.describe Kettle::Test do
 
     it "prints usage without running specs or creating a log directory" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
 
-        stdout, stderr, status = Open3.capture3(script, "--help", chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, "--help", chdir: dir)
 
         expect(status).to be_success
         expect(stderr).to eq("")
@@ -156,7 +170,7 @@ RSpec.describe Kettle::Test do
 
     it "runs from the project root when BUNDLE_GEMFILE points at an Appraisal gemfile" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         bin_dir = File.join(dir, "bin")
         gemfiles_dir = File.join(dir, "gemfiles")
         fake_bundle = File.join(bin_dir, "bundle")
@@ -177,10 +191,10 @@ RSpec.describe Kettle::Test do
           "BUNDLE_GEMFILE" => appraisal_gemfile,
           "KETTLE_TEST_RUNNER" => "rspec",
           "K_SOUP_COV_DO" => "false",
-          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+          "PATH" => path_with_prefix(ENV.fetch("PATH"), bin_dir)
         }
 
-        stdout, stderr, status = Open3.capture3(env, script, chdir: gemfiles_dir)
+        stdout, stderr, status = capture_kettle_test(script, env: env, chdir: gemfiles_dir)
 
         expect(status).to be_success
         expect(stderr).to eq("")
@@ -192,7 +206,7 @@ RSpec.describe Kettle::Test do
 
     it "prints the RSpec seed in the run highlights when present" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         bin_dir = File.join(dir, "bin")
         fake_bundle = File.join(bin_dir, "bundle")
         lib_dir = File.expand_path("../../lib", __dir__.to_s)
@@ -221,10 +235,10 @@ RSpec.describe Kettle::Test do
         env = {
           "KETTLE_TEST_RUNNER" => "rspec",
           "K_SOUP_COV_DO" => "false",
-          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+          "PATH" => path_with_prefix(ENV.fetch("PATH"), bin_dir)
         }
 
-        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, env: env, chdir: dir)
 
         expect(status).to be_success
         expect(stderr).to eq("")
@@ -234,7 +248,7 @@ RSpec.describe Kettle::Test do
 
     it "deduplicates repeated failed examples in the run highlights" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         bin_dir = File.join(dir, "bin")
         fake_bundle = File.join(bin_dir, "bundle")
 
@@ -253,10 +267,10 @@ RSpec.describe Kettle::Test do
         env = {
           "KETTLE_TEST_RUNNER" => "rspec",
           "K_SOUP_COV_DO" => "false",
-          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+          "PATH" => path_with_prefix(ENV.fetch("PATH"), bin_dir)
         }
 
-        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, env: env, chdir: dir)
 
         expect(status.exitstatus).to eq(1)
         expect(stderr).to eq("")
@@ -267,7 +281,7 @@ RSpec.describe Kettle::Test do
 
     it "marks the run failed when the runner exits non-zero without failed examples" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         bin_dir = File.join(dir, "bin")
         fake_bundle = File.join(bin_dir, "bundle")
 
@@ -284,10 +298,10 @@ RSpec.describe Kettle::Test do
         env = {
           "KETTLE_TEST_RUNNER" => "rspec",
           "K_SOUP_COV_DO" => "false",
-          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+          "PATH" => path_with_prefix(ENV.fetch("PATH"), bin_dir)
         }
 
-        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, env: env, chdir: dir)
 
         expect(status.exitstatus).to eq(1)
         expect(stderr).to eq("")
@@ -299,7 +313,7 @@ RSpec.describe Kettle::Test do
 
     it "marks the run failed when errors occurred outside of examples" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         bin_dir = File.join(dir, "bin")
         fake_bundle = File.join(bin_dir, "bundle")
 
@@ -316,10 +330,10 @@ RSpec.describe Kettle::Test do
         env = {
           "KETTLE_TEST_RUNNER" => "rspec",
           "K_SOUP_COV_DO" => "false",
-          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+          "PATH" => path_with_prefix(ENV.fetch("PATH"), bin_dir)
         }
 
-        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, env: env, chdir: dir)
 
         expect(status.exitstatus).to eq(1)
         expect(stderr).to eq("")
@@ -330,7 +344,7 @@ RSpec.describe Kettle::Test do
 
     it "forwards RSpec file:line selectors to the turbo_tests2 runner" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         bin_dir = File.join(dir, "bin")
         fake_bundle = File.join(bin_dir, "bundle")
 
@@ -349,13 +363,13 @@ RSpec.describe Kettle::Test do
         env = {
           "KETTLE_TEST_RUNNER" => "turbo_tests2",
           "K_SOUP_COV_DO" => "false",
-          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}"
+          "PATH" => path_with_prefix(ENV.fetch("PATH"), bin_dir)
         }
 
-        stdout, stderr, status = Open3.capture3(
-          env,
+        stdout, stderr, status = capture_kettle_test(
           script,
           "spec/kettle/test_spec.rb:167",
+          env: env,
           chdir: dir
         )
 
@@ -367,7 +381,7 @@ RSpec.describe Kettle::Test do
 
     it "silences turbo_tests2 worker output when kettle-test silent mode is enabled" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         bin_dir = File.join(dir, "bin")
         fake_bundle = File.join(bin_dir, "bundle")
 
@@ -385,11 +399,11 @@ RSpec.describe Kettle::Test do
           "KETTLE_TEST_RUNNER" => "turbo_tests2",
           "KETTLE_TEST_SILENT" => "true",
           "K_SOUP_COV_DO" => "false",
-          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}",
+          "PATH" => path_with_prefix(ENV.fetch("PATH"), bin_dir),
           "TURBO_TESTS2_WORKER_OUTPUT" => nil
         }
 
-        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, env: env, chdir: dir)
 
         expect(status).to be_success
         expect(stderr).to eq("")
@@ -399,7 +413,7 @@ RSpec.describe Kettle::Test do
 
     it "preserves explicit turbo_tests2 worker output mode" do
       Dir.mktmpdir do |dir|
-        script = File.expand_path("../../exe/kettle-test.sh", __dir__.to_s)
+        script = File.expand_path("../../exe/kettle-test", __dir__.to_s)
         bin_dir = File.join(dir, "bin")
         fake_bundle = File.join(bin_dir, "bundle")
 
@@ -417,11 +431,11 @@ RSpec.describe Kettle::Test do
           "KETTLE_TEST_RUNNER" => "turbo_tests2",
           "KETTLE_TEST_SILENT" => "true",
           "K_SOUP_COV_DO" => "false",
-          "PATH" => "#{bin_dir}:#{ENV.fetch("PATH")}",
+          "PATH" => path_with_prefix(ENV.fetch("PATH"), bin_dir),
           "TURBO_TESTS2_WORKER_OUTPUT" => "warnings"
         }
 
-        stdout, stderr, status = Open3.capture3(env, script, chdir: dir)
+        stdout, stderr, status = capture_kettle_test(script, env: env, chdir: dir)
 
         expect(status).to be_success
         expect(stderr).to eq("")

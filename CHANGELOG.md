@@ -28,6 +28,8 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- The executable integration specs invoke the Ruby wrapper, which launches the Bash runner correctly on Windows.
+
 ### Security
 
 ## [2.0.23] - 2026-09-26
