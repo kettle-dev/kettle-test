@@ -22,19 +22,11 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- [kc] kettle-jem/prepare: updated 8 project files:
-  - dependencies (8)
-
-- [kc] kettle-jem/template: updated 1 project file:
-  - other (1)
-
 ### Deprecated
 
 ### Removed
 
 ### Fixed
-
-- The executable integration specs invoke the Ruby wrapper, which launches the Bash runner correctly on Windows.
 
 ### Security
 
@@ -56,18 +48,19 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- [kc] kettle-jem/prepare: updated 14 project files:
-  - dependencies (14)
-
-- [kc] kettle-jem/template: updated 34 project files:
+- [kc] kettle-jem/prepare: updated 22 project files:
+  - dependencies (22)
+- [kc] kettle-jem/template: updated 35 project files:
   - code and tests (2)
   - dependencies (1)
-  - other (1)
+  - other (2)
   - workflows (30)
 
 ### Fixed
 
 - The kettle-test executable invokes its Bash runner explicitly on Windows platforms.
+
+- The executable integration specs invoke the Ruby wrapper, which launches the Bash runner correctly on Windows.
 
 ## [2.0.22] - 2026-09-13
 
