@@ -65,6 +65,12 @@ RSpec.describe Kettle::Test do
     "#{prefix}#{File::PATH_SEPARATOR}#{path}"
   end
 
+  def normalize_msys_drive_path(path)
+    return path unless path[0] == "/" && path.length > 2 && path[2] == "/"
+
+    "#{path[1].upcase}:#{path[2, path.length]}"
+  end
+
   describe "::is_parallel_test?" do
     it "returns false when TEST_ENV_NUMBER is not set" do
       stub_env("TEST_ENV_NUMBER" => nil)
@@ -198,7 +204,9 @@ RSpec.describe Kettle::Test do
 
         expect(status).to be_success
         expect(stderr).to eq("")
-        expect(stdout).to include("FAKE_BUNDLE_PWD=#{dir}")
+        bundle_pwd_line = stdout.lines.find { |line| line[0, 16] == "FAKE_BUNDLE_PWD=" }
+        bundle_pwd = bundle_pwd_line.sub("FAKE_BUNDLE_PWD=", "").chomp
+        expect(normalize_msys_drive_path(bundle_pwd)).to eq(File.expand_path(dir))
         expect(File.exist?(File.join(dir, "tmp", "kettle-test"))).to be(true)
         expect(File.exist?(File.join(gemfiles_dir, "tmp", "kettle-test"))).to be(false)
       end
