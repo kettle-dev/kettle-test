@@ -5,6 +5,7 @@ require "fileutils"
 require "open3"
 require "rbconfig"
 require "tmpdir"
+require "kettle/dev/paths"
 
 RSpec.describe Kettle::Test do
   include_context "with stubbed env"
@@ -206,7 +207,7 @@ RSpec.describe Kettle::Test do
         expect(stderr).to eq("")
         bundle_pwd_line = stdout.lines.find { |line| line[0, 16] == "FAKE_BUNDLE_PWD=" }
         bundle_pwd = bundle_pwd_line.sub("FAKE_BUNDLE_PWD=", "").chomp
-        expect(normalize_msys_drive_path(bundle_pwd)).to eq(File.expand_path(dir))
+        expect(Kettle::Dev::Paths.same?(normalize_msys_drive_path(bundle_pwd), dir)).to be(true)
         expect(File.exist?(File.join(dir, "tmp", "kettle-test"))).to be(true)
         expect(File.exist?(File.join(gemfiles_dir, "tmp", "kettle-test"))).to be(false)
       end
