@@ -22,6 +22,23 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [2.0.24] - 2026-10-10
+
+- TAG: [v2.0.24][2.0.24t]
+- COVERAGE: 96.84% -- 92/95 lines in 17 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 17 files
+- 100.00% documented
+
+### Changed
+
 - [kc] kettle-jem/prepare: updated 12 project files:
   - dependencies (12)
 
@@ -31,14 +48,6 @@ Please file a bug if you notice a violation of semantic versioning.
   - documentation (1)
   - other (2)
   - workflows (1)
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 
 ## [2.0.23] - 2026-09-27
 
@@ -681,7 +690,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.23...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.24...HEAD
+[2.0.24]: https://github.com/kettle-dev/kettle-test/compare/v2.0.23...v2.0.24
+[2.0.24t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.24
 [2.0.23]: https://github.com/kettle-dev/kettle-test/compare/v2.0.22...v2.0.23
 [2.0.23t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.23
 [2.0.22]: https://github.com/kettle-dev/kettle-test/compare/v2.0.21...v2.0.22
