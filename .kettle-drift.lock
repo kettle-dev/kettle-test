@@ -3,8 +3,17 @@
     {
       "file": "CHANGELOG.md",
       "lines": [
-        29,
-        102
+        54,
+        119
+      ]
+    }
+  ],
+  "- ruby: \"ruby\"\nappraisal: \"current\"": [
+    {
+      "file": ".github/workflows/current.yml",
+      "lines": [
+        40,
+        46
       ]
     }
   ],
