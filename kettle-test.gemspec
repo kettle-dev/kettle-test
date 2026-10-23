@@ -126,7 +126,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("silent_stream", "~> 1.0", ">= 1.0.12")           # ruby >= 2.3.0, for output capture
   spec.add_dependency("timecop-rspec", "~> 1.0", ">= 1.0.3")            # ruby >= 1.9.2, time-based testing helpers
   spec.add_dependency("turbo_tests2", ">= 3.1.12")                       # ruby >= 2.4.0, shared RSpec helpers for spawned subprocess specs; 4.0 dropped parallel_tests and its CLI surface is compatible
-  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.15")              # ruby >= 2.2.0
+  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.16")              # ruby >= 2.2.0
 
   # NOTE: It is preferable to list development dependencies in the gemspec due to increased
   #       visibility and discoverability.
