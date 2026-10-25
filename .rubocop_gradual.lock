@@ -2,6 +2,9 @@
   "bin/prepare-commit-msg:60574733": [
     [16, 13, 76, "Lint/MixedRegexpCaptureTypes: Do not mix named captures and numbered captures in a Regexp literal.", 1400492948]
   ],
+  "gemfiles/modular/style_local.gemfile:4188124346": [
+    [71, 23, 20, "Style/SafeNavigation: Use safe navigation (`&.`) instead of checking if an object exists before calling the method.", 1851388465]
+  ],
   "lib/kettle/test/config/version_gem.rb:446940845": [
     [4, 1, 27, "Lint/DuplicateRequire: Duplicate `require` detected.", 2970467194]
   ]

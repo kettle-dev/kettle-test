@@ -13,8 +13,12 @@ gem_version =
     # See: https://github.com/panorama-ed/memo_wise/pull/397
     Module.new.tap { |mod| Kernel.load("#{__dir__}/lib/kettle/test/version.rb", mod) }::Kettle::Test::Version::VERSION
   else
-    require_relative "lib/kettle/test/version"
-    Kettle::Test::Version::VERSION
+    # Ruby < 3.1: Kernel.load(path, module) is unavailable, but Module#module_eval with file
+    # metadata works on Ruby 2.2+. Anonymous loading matters beyond coverage: evaluating this
+    # gemspec (e.g. by bundler/setup in a subprocess) must not define top-level constants,
+    # which isolated-loading specs assert on.
+    version_path = "#{__dir__}/lib/kettle/test/version.rb"
+    Module.new.tap { |mod| mod.module_eval(File.read(version_path), version_path, 1) }::Kettle::Test::Version::VERSION
   end
 
 Gem::Specification.new do |spec|
@@ -142,7 +146,7 @@ Gem::Specification.new do |spec|
   #       and preferably a modular one (see gemfiles/modular/*.gemfile).
 
   # Dev, Test, & Release Tasks
-  spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.13")             # ruby >= 2.4
+  spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.24")             # ruby >= 2.4
 
   # Security
   spec.add_development_dependency("bundler-audit", "~> 0.9.3")                      # ruby >= 2.0.0
@@ -155,7 +159,7 @@ Gem::Specification.new do |spec|
 
   # Testing
   # Loads version files in anonymous namespaces for coverage without constant redefinition warnings.
-  spec.add_development_dependency("anonymous_loader", "~> 0.1", ">= 0.1.3")         # ruby >= 2.2.0
+  spec.add_development_dependency("anonymous_loader", "~> 0.1", ">= 0.1.4")         # ruby >= 2.2.0
 
   # Releasing
   spec.add_development_dependency("ruby-progressbar", "~> 1.13")                    # ruby >= 0
