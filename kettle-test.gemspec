@@ -122,6 +122,7 @@ Gem::Specification.new do |spec|
   # Utilities
   spec.add_dependency("appraisal2", "~> 3.0", ">= 3.0.6")               # ruby >= 1.8.7, for testing against multiple versions of dependencies
   spec.add_dependency("backports", "~> 3.0")
+  spec.add_dependency("kettle-ndjson", "~> 0.1", ">= 0.1.23")           # ruby >= 2.4, NDJSON emission for opt-in test_progress events
   spec.add_dependency("rspec", "~> 3.0")                                # ruby > 0
   spec.add_dependency("rspec-block_is_expected", "~> 1.0", ">= 1.0.6")  # ruby >= 1.8.7, for block_is_expected.to syntax
   spec.add_dependency("rspec_junit_formatter", "~> 0.6")                # ruby >= 2.3.0, for GitLab Test Result Parsing

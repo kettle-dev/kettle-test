@@ -13,6 +13,7 @@ PATH
     kettle-test (2.0.29)
       appraisal2 (~> 3.0, >= 3.0.6)
       backports (~> 3.0)
+      kettle-ndjson (~> 0.1, >= 0.1.23)
       rspec (~> 3.0)
       rspec-block_is_expected (~> 1.0, >= 1.0.6)
       rspec-pending_for (~> 0.1, >= 0.1.20)
