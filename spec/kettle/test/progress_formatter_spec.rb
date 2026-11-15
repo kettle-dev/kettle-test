@@ -9,7 +9,8 @@ require "kettle/test/progress_formatter"
 RSpec.describe Kettle::Test::ProgressFormatter do
   let(:io) { StringIO.new }
   let(:now) { [0.0] }
-  let(:formatter) { described_class.new(io, interval: 1.0, clock: -> { now[0] }) }
+  let(:progress) { Kettle::Ndjson::TestProgress.new(io: io, source: "kettle-test", interval: 1.0, clock: -> { now[0] }) }
+  let(:formatter) { described_class.new(io, progress: progress) }
   let(:example) { double("example", location: "./spec/a_spec.rb:3", full_description: "A fails") }
   let(:failed) { double("notification", example: example) }
 
@@ -27,35 +28,21 @@ RSpec.describe Kettle::Test::ProgressFormatter do
     expect(described_class.turbo_worker?({})).to be(false)
   end
 
-  it "throttles ticks" do
-    5.times { formatter.example_passed(nil) }
-    expect(events.size).to eq(1)
+  it "maps rspec notifications onto test_progress events" do
+    formatter.example_passed(nil)
     now[0] = 1.5
     formatter.example_pending(nil)
-    expect(events.last).to include(
-      "type" => "test_progress", "event_version" => 1, "kind" => "tick", "source" => "kettle-test",
-      "examples" => 6, "failures" => 0, "pending" => 1, "elapsed" => 1.5
-    )
-    expect(events.size).to eq(2)
-  end
-
-  it "emits failures immediately and a final event" do
-    formatter.example_passed(nil)
     formatter.example_failed(failed)
     formatter.close(nil)
-    expect(events[1]).to include("kind" => "failure", "failures" => 1, "location" => "./spec/a_spec.rb:3", "description" => "A fails")
-    expect(events.last).to include("kind" => "final", "examples" => 2, "failures" => 1)
+    expect(events.map { |e| e["kind"] }).to eq(%w[tick tick failure final])
+    expect(events[2]).to include("source" => "kettle-test", "location" => "./spec/a_spec.rb:3", "description" => "A fails")
+    expect(events.last).to include("examples" => 3, "failures" => 1, "pending" => 1)
   end
 
-  describe "interval from env" do
-    it "uses KETTLE_TEST_EVENTS_INTERVAL, falling back on garbage or negatives" do
-      stub_env("KETTLE_TEST_EVENTS_INTERVAL" => "5")
-      expect(described_class.new(io).instance_variable_get(:@interval)).to eq(5.0)
-      stub_env("KETTLE_TEST_EVENTS_INTERVAL" => "abc")
-      expect(described_class.new(io).instance_variable_get(:@interval)).to eq(1.0)
-      stub_env("KETTLE_TEST_EVENTS_INTERVAL" => "-2")
-      expect(described_class.new(io).instance_variable_get(:@interval)).to eq(1.0)
-    end
+  it "builds its own TestProgress (source kettle-test, env interval) when none is injected" do
+    stub_env("KETTLE_TEST_EVENTS_INTERVAL" => "5")
+    described_class.new(io).close(nil)
+    expect(events.last).to include("type" => "test_progress", "source" => "kettle-test", "kind" => "final")
   end
 
   describe "opt-in wiring (real rspec subprocess)" do
