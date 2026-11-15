@@ -122,6 +122,7 @@ Gem::Specification.new do |spec|
   # Utilities
   spec.add_dependency("appraisal2", "~> 3.0", ">= 3.0.6")               # ruby >= 1.8.7, for testing against multiple versions of dependencies
   spec.add_dependency("backports", "~> 3.0")
+  spec.add_dependency("kettle-ndjson", "~> 0.1", ">= 0.1.24")           # ruby >= 2.4, NDJSON emission for opt-in test_progress events
   spec.add_dependency("rspec", "~> 3.0")                                # ruby > 0
   spec.add_dependency("rspec-block_is_expected", "~> 1.0", ">= 1.0.6")  # ruby >= 1.8.7, for block_is_expected.to syntax
   spec.add_dependency("rspec_junit_formatter", "~> 0.6")                # ruby >= 2.3.0, for GitLab Test Result Parsing
@@ -129,7 +130,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("rspec-stubbed_env", "~> 1.0", ">= 1.0.17")        # ruby >= 2.3.0, helper for stubbing ENV in specs
   spec.add_dependency("silent_stream", "~> 1.0", ">= 1.0.12")           # ruby >= 2.3.0, for output capture
   spec.add_dependency("timecop-rspec", "~> 1.0", ">= 1.0.3")            # ruby >= 1.9.2, time-based testing helpers
-  spec.add_dependency("turbo_tests2", ">= 3.1.12")                       # ruby >= 2.4.0, shared RSpec helpers for spawned subprocess specs; 4.0 dropped parallel_tests and its CLI surface is compatible
+  spec.add_dependency("turbo_tests2", ">= 4.0.2")                        # ruby >= 2.4.0, shared RSpec helpers for spawned subprocess specs; 4.0 dropped parallel_tests and its CLI surface is compatible
   spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.17")              # ruby >= 2.2.0
 
   # NOTE: It is preferable to list development dependencies in the gemspec due to increased

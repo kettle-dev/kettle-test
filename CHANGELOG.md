@@ -20,6 +20,8 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
+- `Kettle::Test::ProgressFormatter`: opt-in (`KETTLE_TEST_EVENTS=1`) throttled `test_progress` NDJSON events for plain rspec runs, an adapter over `Kettle::Ndjson::TestProgress` (kettle-ndjson >= 0.1.24)
+
 ### Changed
 
 ### Deprecated

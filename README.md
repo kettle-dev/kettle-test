@@ -467,6 +467,34 @@ RSpec.describe("flaky external call", :skip_ci) do
 end
 ```
 
+### Live test progress events
+
+Opt-in, off by default. Set `KETTLE_TEST_EVENTS=1` (also `true`/`yes`/`on`) and
+`kettle/test/rspec` registers `Kettle::Test::ProgressFormatter` on stdout (or pass
+`--format Kettle::Test::ProgressFormatter` yourself). It emits
+[kettle-ndjson](https://github.com/kettle-dev/kettle-ndjson) `test_progress` events, one JSON
+object per line, never one per example. The schema is identical to
+[turbo_tests2](https://github.com/galtzo-floss/turbo_tests2)'s parallel-run events.
+Under turbo_tests2 workers the formatter stays silent; the parent emits.
+
+```json
+{"kind":"tick","source":"kettle-test","examples":120,"failures":1,"pending":2,"elapsed":8.31,"type":"test_progress","event_version":1}
+{"kind":"failure","source":"kettle-test","examples":57,"failures":1,"pending":0,"elapsed":4.02,"location":"./spec/a_spec.rb:3","description":"A fails","type":"test_progress","event_version":1}
+```
+
+| Field | Meaning |
+| --- | --- |
+| `type` | always `test_progress` |
+| `event_version` | `1` |
+| `kind` | `tick` (throttled, at most 1/s), `failure` (immediate, one per failed example), `final` (once, at end) |
+| `source` | `kettle-test` (turbo_tests2 emits `turbo_tests2`) |
+| `examples`, `failures`, `pending` | running totals |
+| `elapsed` | seconds since the run started (float) |
+| `location`, `description` | `failure` only: example location and full description |
+
+`KETTLE_TEST_EVENTS_INTERVAL` (seconds, default `1`) tunes the tick throttle. Each event is
+preceded by a newline so it starts on its own line even amid progress dots.
+
 ### Profile slowest examples
 
 Set KETTLE_TEST_RSPEC_PROFILE_EXAMPLES to a positive integer to enable RSpec profiling.
