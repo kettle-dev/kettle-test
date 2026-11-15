@@ -52,7 +52,8 @@ RSpec.describe Kettle::Test::ProgressFormatter do
           require "kettle/test/rspec"
           RSpec.describe("a") { it("passes") { expect(1).to eq(1) }; it("fails") { expect(1).to eq(2) } }
         RUBY
-        out, = Open3.capture2(env, RbConfig.ruby, "-I", File.expand_path("../../../lib", __dir__), "-S", "rspec", File.join(dir, "a_spec.rb"), chdir: dir)
+        out, err, = Open3.capture3(env, RbConfig.ruby, "-I", File.expand_path("../../../lib", __dir__), "-S", "rspec", File.join(dir, "a_spec.rb"), chdir: dir)
+        @subprocess_output = "STDOUT:\n#{out}\nSTDERR:\n#{err}"
         out.lines.map(&:strip).select { |l| l.include?('"type":"test_progress"') }.map { |l| JSON.parse(l[l.index("{"), l.size]) }
       end
     end
@@ -63,7 +64,7 @@ RSpec.describe Kettle::Test::ProgressFormatter do
 
     it "emits failure and final events when opted in" do
       kinds = run_rspec({"KETTLE_TEST_EVENTS" => "1"}).map { |e| e["kind"] }
-      expect(kinds).to include("failure", "final")
+      expect(kinds).to include("failure", "final"), @subprocess_output
     end
   end
 end
