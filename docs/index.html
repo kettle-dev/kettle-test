@@ -174,7 +174,7 @@ and concordant releases of JRuby, and TruffleRuby.</p>
     <tr>
       <td>Source</td>
       <td>
-<a href="https://gitlab.com/kettle-dev/kettle-test"><img src="https://img.shields.io/badge/GitLab-FBA326?style=for-the-badge&amp;logo=Gitlab&amp;logoColor=orange" alt="Source on GitLab.com"></a> <a href="https://codeberg.org/kettle-dev/kettle-test"><img src="https://img.shields.io/badge/CodeBerg-4893CC?style=for-the-badge&amp;logo=CodeBerg&amp;logoColor=blue" alt="Source on CodeBerg.org"></a> <a href="https://github.com/kettle-dev/kettle-test"><img src="https://img.shields.io/badge/GitHub-238636?style=for-the-badge&amp;logo=GitHub&amp;logoColor=green" alt="Source on GitHub.com"></a> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="https://img.shields.io/badge/KLOC-0.095-FFDD67.svg?style=for-the-badge&amp;logo=YouTube&amp;logoColor=blue" alt="The best SHA: dQw4w9WgXcQ!"></a>
+<a href="https://gitlab.com/kettle-dev/kettle-test"><img src="https://img.shields.io/badge/GitLab-FBA326?style=for-the-badge&amp;logo=Gitlab&amp;logoColor=orange" alt="Source on GitLab.com"></a> <a href="https://codeberg.org/kettle-dev/kettle-test"><img src="https://img.shields.io/badge/CodeBerg-4893CC?style=for-the-badge&amp;logo=CodeBerg&amp;logoColor=blue" alt="Source on CodeBerg.org"></a> <a href="https://github.com/kettle-dev/kettle-test"><img src="https://img.shields.io/badge/GitHub-238636?style=for-the-badge&amp;logo=GitHub&amp;logoColor=green" alt="Source on GitHub.com"></a> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="https://img.shields.io/badge/KLOC-0.118-FFDD67.svg?style=for-the-badge&amp;logo=YouTube&amp;logoColor=blue" alt="The best SHA: dQw4w9WgXcQ!"></a>
 </td>
     </tr>
     <tr>
@@ -717,6 +717,70 @@ end
   end
 end
 </code></pre>
+
+<h3 id="live-test-progress-events">Live test progress events</h3>
+
+<p>Opt-in, off by default. Set <code>KETTLE_TEST_EVENTS=1</code> (also <code>true</code>/<code>yes</code>/<code>on</code>) and<br>
+<code>kettle/test/rspec</code> registers <code>Kettle::Test::ProgressFormatter</code> on stdout (or pass<br>
+<code>--format Kettle::Test::ProgressFormatter</code> yourself). It emits<br>
+<a href="https://github.com/kettle-dev/kettle-ndjson">kettle-ndjson</a> <code>test_progress</code> events, one JSON<br>
+object per line, never one per example. The schema is identical to<br>
+<a href="https://github.com/galtzo-floss/turbo_tests2">turbo_tests2</a>’s parallel-run events.<br>
+Under turbo_tests2 workers the formatter stays silent; the parent emits.</p>
+
+<pre class="code language-json"><code class="language-json">{&quot;kind&quot;:&quot;tick&quot;,&quot;source&quot;:&quot;kettle-test&quot;,&quot;examples&quot;:120,&quot;failures&quot;:1,&quot;pending&quot;:2,&quot;elapsed&quot;:8.31,&quot;type&quot;:&quot;test_progress&quot;,&quot;event_version&quot;:1}
+{&quot;kind&quot;:&quot;failure&quot;,&quot;source&quot;:&quot;kettle-test&quot;,&quot;examples&quot;:57,&quot;failures&quot;:1,&quot;pending&quot;:0,&quot;elapsed&quot;:4.02,&quot;location&quot;:&quot;./spec/a_spec.rb:3&quot;,&quot;description&quot;:&quot;A fails&quot;,&quot;type&quot;:&quot;test_progress&quot;,&quot;event_version&quot;:1}
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>type</code></td>
+      <td>always <code>test_progress</code>
+</td>
+    </tr>
+    <tr>
+      <td><code>event_version</code></td>
+      <td><code>1</code></td>
+    </tr>
+    <tr>
+      <td><code>kind</code></td>
+      <td>
+<code>tick</code> (throttled, at most 1/s), <code>failure</code> (immediate, one per failed example), <code>final</code> (once, at end)</td>
+    </tr>
+    <tr>
+      <td><code>source</code></td>
+      <td>
+<code>kettle-test</code> (turbo_tests2 emits <code>turbo_tests2</code>)</td>
+    </tr>
+    <tr>
+      <td>
+<code>examples</code>, <code>failures</code>, <code>pending</code>
+</td>
+      <td>running totals</td>
+    </tr>
+    <tr>
+      <td><code>elapsed</code></td>
+      <td>seconds since the run started (float)</td>
+    </tr>
+    <tr>
+      <td>
+<code>location</code>, <code>description</code>
+</td>
+      <td>
+<code>failure</code> only: example location and full description</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code>KETTLE_TEST_EVENTS_INTERVAL</code> (seconds, default <code>1</code>) tunes the tick throttle. Each event is<br>
+preceded by a newline so it starts on its own line even amid progress dots.</p>
 
 <h3 id="profile-slowest-examples">Profile slowest examples</h3>
 

@@ -20,6 +20,25 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [2.0.30] - 2026-11-15
+
+- TAG: [v2.0.30][2.0.30t]
+- COVERAGE: 97.46% -- 115/118 lines in 19 files
+- BRANCH COVERAGE: 100.00% -- 2/2 branches in 19 files
+- 85.71% documented
+
+### Added
+
 - `Kettle::Test::ProgressFormatter`: opt-in (`KETTLE_TEST_EVENTS=1`) throttled `test_progress` NDJSON events for plain rspec runs, an adapter over `Kettle::Ndjson::TestProgress` (kettle-ndjson >= 0.1.24)
 
 ### Changed
@@ -32,14 +51,6 @@ Please file a bug if you notice a violation of semantic versioning.
   - dependencies (3)
   - other (3)
   - workflows (9)
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 
 ## [2.0.29] - 2026-10-28
 
@@ -789,7 +800,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - silent_stream
   - timecop-rspec
 
-[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.29...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-test/compare/v2.0.30...HEAD
+[2.0.30]: https://github.com/kettle-dev/kettle-test/compare/v2.0.29...v2.0.30
+[2.0.30t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.30
 [2.0.29]: https://github.com/kettle-dev/kettle-test/compare/v2.0.28...v2.0.29
 [2.0.29t]: https://github.com/kettle-dev/kettle-test/releases/tag/v2.0.29
 [2.0.28]: https://github.com/kettle-dev/kettle-test/compare/v2.0.27...v2.0.28
