@@ -59,11 +59,15 @@ RSpec.describe Kettle::Test::ProgressFormatter do
     end
 
     it "emits nothing by default" do
-      expect(run_rspec({"KETTLE_TEST_EVENTS" => nil})).to be_empty
+      expect(run_rspec({"KETTLE_TEST_EVENTS" => nil, "RSPEC_FORMATTER_OUTPUT_ID" => nil})).to be_empty
+    end
+
+    it "stays silent inside a turbo_tests2 worker (RSPEC_FORMATTER_OUTPUT_ID set)" do
+      expect(run_rspec({"KETTLE_TEST_EVENTS" => "1", "RSPEC_FORMATTER_OUTPUT_ID" => "x"})).to be_empty
     end
 
     it "emits failure and final events when opted in" do
-      kinds = run_rspec({"KETTLE_TEST_EVENTS" => "1"}).map { |e| e["kind"] }
+      kinds = run_rspec({"KETTLE_TEST_EVENTS" => "1", "RSPEC_FORMATTER_OUTPUT_ID" => nil}).map { |e| e["kind"] }
       expect(kinds).to include("failure", "final"), @subprocess_output
     end
   end
