@@ -131,7 +131,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("rspec-block_is_expected", "~> 1.0", ">= 1.0.6")  # ruby >= 1.8.7, for block_is_expected.to syntax
   spec.add_dependency("rspec_junit_formatter", "~> 0.6")                # ruby >= 2.3.0, for GitLab Test Result Parsing
   spec.add_dependency("rspec-pending_for", "~> 0.1", ">= 0.1.20")       # ruby >= 1.8.7, used to skip specs on incompatible Rubies
-  spec.add_dependency("rspec-stubbed_env", "~> 1.0", ">= 1.0.18")        # ruby >= 2.3.0, helper for stubbing ENV in specs
+  spec.add_dependency("rspec-stubbed_env", "~> 1.0", ">= 1.0.19")        # ruby >= 2.3.0, helper for stubbing ENV in specs
   spec.add_dependency("silent_stream", "~> 1.0", ">= 1.0.12")           # ruby >= 2.3.0, for output capture
   spec.add_dependency("timecop-rspec", "~> 1.0", ">= 1.0.3")            # ruby >= 1.9.2, time-based testing helpers
   spec.add_dependency("turbo_tests2", ">= 4.0.2")                        # ruby >= 2.4.0, shared RSpec helpers for spawned subprocess specs; 4.0 dropped parallel_tests and its CLI surface is compatible
@@ -151,7 +151,7 @@ Gem::Specification.new do |spec|
   #       and preferably a modular one (see gemfiles/modular/*.gemfile).
 
   # Dev, Test, & Release Tasks
-  spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.28")             # ruby >= 2.4
+  spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.33")             # ruby >= 2.4
 
   # Security
   spec.add_development_dependency("bundler-audit", "~> 0.9.3")                      # ruby >= 2.0.0
@@ -160,7 +160,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("rake", "~> 13.0")                                # ruby >= 2.2.0
 
   # Debugging
-  spec.add_development_dependency("require_bench", "~> 1.0", ">= 1.0.4")            # ruby >= 2.2.0
+  spec.add_development_dependency("require_bench", "~> 1.0", ">= 1.0.5")            # ruby >= 2.2.0
 
   # Testing
   # Loads version files in anonymous namespaces for coverage without constant redefinition warnings.
@@ -168,12 +168,12 @@ Gem::Specification.new do |spec|
 
   # Releasing
   spec.add_development_dependency("ruby-progressbar", "~> 1.13")                    # ruby >= 0
-  spec.add_development_dependency("stone_checksums", "~> 1.0", ">= 1.0.10")          # ruby >= 2.2.0
+  spec.add_development_dependency("stone_checksums", "~> 1.0", ">= 1.0.11")          # ruby >= 2.2.0
 
   # Development tasks
   # The cake is a lie. erb v2.2, the oldest release, was never compatible with Ruby 2.3.
   # This means we have no choice but to use the erb that shipped with Ruby 2.3
   # /opt/hostedtoolcache/Ruby/2.3.8/x64/lib/ruby/gems/2.3.0/gems/erb-2.2.2/lib/erb.rb:670:in `prepare_trim_mode': undefined method `match?' for "-":String (NoMethodError)
   # spec.add_development_dependency("erb", ">= 2.2")                                  # ruby >= 2.3.0, not SemVer, old rubies get dropped in a patch.
-  spec.add_development_dependency("gitmoji-regex", "~> 2.0", ">= 2.0.16")            # ruby >= 2.4
+  spec.add_development_dependency("gitmoji-regex", "~> 2.0", ">= 2.0.17")            # ruby >= 2.4
 end
